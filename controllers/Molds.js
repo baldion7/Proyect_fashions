@@ -1,9 +1,9 @@
-import {Model} from "../models/ModelModels.js";
+import {Models} from "../models/MoldsModel.js";
 
 export const CreateModel = async (req, res) => {
     const {imgroute,garmentid} = req.body;
     try {
-        const respuesta = await Model.create({
+        const respuesta = await Models.create({
             img_route: imgroute,garmentId:garmentid
         });
         res.status(200).json(respuesta);
@@ -13,7 +13,7 @@ export const CreateModel = async (req, res) => {
 };
 export const GetModel = async (req, res) => {
     try {
-        const respuesta = await Model.findAll({});
+        const respuesta = await Models.findAll({});
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
@@ -22,7 +22,7 @@ export const GetModel = async (req, res) => {
 
 export const GetModelById = async (req, res) => {
     try {
-        const respuesta = await Model.findOne({
+        const respuesta = await Models.findOne({
             where: {
                 Id: req.params.id
             }
@@ -34,7 +34,7 @@ export const GetModelById = async (req, res) => {
 };
 export const DeleteModel = async (req, res) => {
     try {
-        const respuesta = await Model.destroy({
+        const respuesta = await Models.destroy({
             where: {
                 Id: req.params.id
             }
@@ -46,7 +46,7 @@ export const DeleteModel = async (req, res) => {
 };
 
 export const UpdateModel= async (req, res) => {
-    const model = await Model.findOne({
+    const model = await Models.findOne({
         where: {
             Id: req.params.id
         }
@@ -54,7 +54,7 @@ export const UpdateModel= async (req, res) => {
     if (!model) return res.status(404).json({msg: "Datos no encontrados"});
     const {imgroute,garmentid} = req.body;
     try {
-        const respuesta = await Model.update({
+        const respuesta = await Models.update({
             img_route: imgroute,garmentId:garmentid
         }, {
             where: {

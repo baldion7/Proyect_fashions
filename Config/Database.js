@@ -33,45 +33,50 @@ db.Category.hasMany(db.Garment, {
     onDelete: 'CASCADE'
 });
 db.Garment.belongsTo(db.Category);
-
+//
 db.Garment.hasMany(db.TechnicalInfo, {
     onDelete: 'CASCADE'
 });
 db.TechnicalInfo.belongsTo(db.Garment);
-
+//
 db.Garment.hasMany(db.Models, {
     onDelete: 'CASCADE'
 });
 db.Models.belongsTo(db.Garment);
-
+//
 db.Garment.hasMany(db.ArmadiTutorials, {
     onDelete: 'CASCADE'
 });
 db.ArmadiTutorials.belongsTo(db.Garment);
-
+//
 db.Garment.hasMany(db.ArmedInfo, {
     onDelete: 'CASCADE'
 });
 db.ArmedInfo.belongsTo(db.Garment);
-
+//
 db.Garment.hasMany(db.ImgGarment, {
     onDelete: 'CASCADE'
 });
 db.ImgGarment.belongsTo(db.Garment);
-
+//
 db.ArmedInfo.hasMany(db.BtnDetails, {
     onDelete: 'CASCADE'
 });
 db.BtnDetails.belongsTo(db.ArmedInfo);
-
-db.BtnDetails.hasMany(db.ImgDetails, {
+//
+db.ImgGarment.hasMany(db.BtnDetails, {
     onDelete: 'CASCADE'
 });
 db.BtnDetails.belongsTo(db.ImgGarment);
-
+//
 db.Roles.hasMany(db.User, {
     onDelete: 'CASCADE'
 });
 db.User.belongsTo(db.Roles);
+//
+db.BtnDetails.hasMany(db.ImgDetails, {
+    onDelete: 'CASCADE'
+});
+db.ImgDetails.belongsTo(db.BtnDetails)
 
 export default db;

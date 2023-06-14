@@ -1,4 +1,11 @@
 import {Garment} from "../models/GarmentModel.js";
+import {Models} from "../models/MoldsModel.js";
+import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
+import {TechnicalInfo} from "../models/TechnicalInfoModel.js";
+import {ArmedInfo} from "../models/ArmedInfoModels.js";
+import {ImgGarment} from "../models/ImgGarmentModel.js";
+import {BtnDetails} from "../models/BtnDetailsModel.js";
+import {ImgDetails} from "../models/ImgDetailsModel.js";
 
 export const CreateGarment = async (req, res) => {
     const {reference,name,garmentid} = req.body;
@@ -13,7 +20,31 @@ export const CreateGarment = async (req, res) => {
 };
 export const GetGarment = async (req, res) => {
     try {
-        const respuesta = await Garment.findAll({});
+        const respuesta = await Garment.findAll({
+            include:[{
+                model:Models,
+            },{
+                model:ArmadiTutorials
+            },{
+                model:TechnicalInfo
+            },{
+                model:ArmedInfo
+            },{
+                model:ImgGarment,
+                include:[
+                    {
+                        model:BtnDetails,
+                        as:'btndetails',
+                        include:[
+                            {
+                                model:ImgDetails
+                            }
+                        ]
+                    }
+                ]
+            }
+            ]
+        });
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
@@ -23,6 +54,29 @@ export const GetGarment = async (req, res) => {
 export const GetGarmentById = async (req, res) => {
     try {
         const respuesta = await Garment.findOne({
+            include:[{
+                model:Models,
+            },{
+                model:ArmadiTutorials
+            },{
+                model:TechnicalInfo
+            },{
+                model:ArmedInfo
+            },{
+                model:ImgGarment,
+                include:[
+                    {
+                        model:BtnDetails,
+                        as:'btndetails',
+                        include:[
+                            {
+                                model:ImgDetails
+                            }
+                        ]
+                    }
+                ]
+            }
+            ],
             where: {
                 Id: req.params.id
             }

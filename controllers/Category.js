@@ -1,4 +1,5 @@
 import {Category} from "../models/CategoryModel.js";
+import {Garment} from "../models/GarmentModel.js";
 
 export const CreateCategory = async (req, res) => {
     const {name, description} = req.body;
@@ -13,7 +14,8 @@ export const CreateCategory = async (req, res) => {
 };
 export const GetCategory = async (req, res) => {
     try {
-        const respuesta = await Category.findAll({});
+        const respuesta = await Category.findAll({
+        });
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
@@ -23,6 +25,11 @@ export const GetCategory = async (req, res) => {
 export const GetCategoryById = async (req, res) => {
     try {
         const respuesta = await Category.findOne({
+            include:[
+                {
+                    model:Garment
+                }
+            ],
             where: {
                 Id: req.params.id
             }

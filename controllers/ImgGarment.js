@@ -1,4 +1,4 @@
-import {ImgDetails} from "../models/ImgDetailsModels.js";
+import {ImgDetails} from "../models/ImgDetailsModel.js";
 
 export const CreateImgDetails = async (req, res) => {
     const {name,imgroute,garmentid} = req.body;

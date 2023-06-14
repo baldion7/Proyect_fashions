@@ -1,4 +1,4 @@
-import {ArmadiTutorials} from "../models/ArmadiTutorialsModels.js";
+import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
 
 export const CreateArmadiTutorials = async (req, res) => {
     const {name, description,garmentid,videoroute} = req.body;

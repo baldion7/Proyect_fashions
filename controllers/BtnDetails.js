@@ -1,4 +1,6 @@
 import {BtnDetails} from "../models/BtnDetailsModel.js";
+import {ImgDetails} from "../models/ImgDetailsModel.js";
+import {ImgGarment} from "../models/ImgGarmentModel.js";
 
 export const CreateBtnDetails = async (req, res) => {
     const {name, description,coordinatesy,coordinatesx,armedinfoid,imggarmentid} = req.body;
@@ -18,7 +20,16 @@ export const CreateBtnDetails = async (req, res) => {
 };
 export const GetBtnDetails = async (req, res) => {
     try {
-        const respuesta = await BtnDetails.findAll({});
+        const respuesta = await BtnDetails.findAll({
+            include:[
+                {
+                    model:ImgDetails
+                },
+                {
+                    model:ImgGarment
+                }
+            ]
+        });
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
@@ -28,6 +39,11 @@ export const GetBtnDetails = async (req, res) => {
 export const GetBtnDetailsById = async (req, res) => {
     try {
         const respuesta = await BtnDetails.findOne({
+            include:[
+                {
+                    model:ImgDetails
+                }
+            ],
             where: {
                 Id: req.params.id
             }

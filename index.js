@@ -5,7 +5,17 @@ import dotenv from "dotenv";
 import db from "./config/Database.js";
 import SequelizeStore from "connect-session-sequelize";
 import bodyParser from 'body-parser';
-
+import Garments from "./routes/GarmentsRouter.js";
+import Category from "./routes/CategoryRouter.js";
+import TechnicalInfo from "./routes/TechnicalInfoRouter.js"
+import ArmedInfo from "./routes/ArmediInfos.js";
+import BtnDetails from "./routes/BtnDetails.js";
+import ImgDetails from "./routes/ImgDetails.js";
+import ImgGarments from "./routes/ImgGarments.js";
+import Molds from "./routes/MoldsRouter.js";
+import Users from "./routes/UsersRouter.js";
+import Roles from "./routes/RolesRouter.js";
+import ArmadiTutorials from "./routes/ArmadiTutorials.js";
 
 
 dotenv.config();
@@ -36,6 +46,17 @@ app.use(cors({
 }));
 app.use(bodyParser.json({ limit: '5gb' }));
 app.use(bodyParser.urlencoded({ limit: '5gb', extended: true }));
+app.use(Garments);
+app.use(Category);
+app.use(TechnicalInfo);
+app.use(ArmedInfo);
+app.use(BtnDetails);
+app.use(ImgDetails);
+app.use(ImgGarments);
+app.use(Molds);
+app.use(Users);
+app.use(Roles);
+app.use(ArmadiTutorials);
 
 
 app.set('view engine', 'ejs');
@@ -52,5 +73,5 @@ app.use((req, res, next) => {
 
 store.sync();
 app.listen(process.env.APP_PORT,()=>{
-    console.log('prendio esta monda')
+    console.log('prendio ')
 });
