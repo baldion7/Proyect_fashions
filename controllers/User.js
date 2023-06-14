@@ -1,10 +1,10 @@
 import {User} from "../models/UserModel.js";
 
 export const CreateUser = async (req, res) => {
-    const {name,password,rolid} = req.body;
+    const {name, password, rolid} = req.body;
     try {
         const respuesta = await User.create({
-            Name: name, Password: password,rolId:rolid
+            Name: name, Password: password, rolId: rolid
         });
         res.status(200).json(respuesta);
     } catch (error) {
@@ -13,7 +13,13 @@ export const CreateUser = async (req, res) => {
 };
 export const GetUser = async (req, res) => {
     try {
-        const respuesta = await User.findAll({});
+        const respuesta = await User.findAll({
+            include:[
+                {
+                    model:User
+                }
+            ]
+        });
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
@@ -45,17 +51,22 @@ export const DeleteUser = async (req, res) => {
     }
 };
 
-export const UpdateUser= async (req, res) => {
+export const UpdateUser = async (req, res) => {
     const user = await User.findOne({
+        include: [
+            {
+                model: User
+            }
+        ],
         where: {
             Id: req.params.id
         }
     });
     if (!user) return res.status(404).json({msg: "Datos no encontrados"});
-    const {name,password,rolid} = req.body;
+    const {name, password, rolid} = req.body;
     try {
         const respuesta = await User.update({
-            Name: name, Password: password,rolId:rolid
+            Name: name, Password: password, rolId: rolid
         }, {
             where: {
                 Id: user.Id
