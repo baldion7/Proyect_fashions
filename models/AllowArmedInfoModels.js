@@ -1,6 +1,6 @@
 import { Sequelize, Model, DataTypes } from 'sequelize';
 
-export class Garment extends Model {
+export class AllowArmedInfo extends Model {
     static init(sequelize) {
         return super.init(
             {
@@ -8,18 +8,11 @@ export class Garment extends Model {
                     type: DataTypes.INTEGER,
                     primaryKey: true,
                     autoIncrement: true
-                },Name: {
-                    type: DataTypes.STRING,
-                    allowNull: false
                 },
-                Reference: {
-                    type: DataTypes.STRING,
-                    allowNull: false
-                }
             },
             {
                 sequelize,
-                modelName: 'garment',
+                modelName: 'allowArmedInfo',
                 timestamps: true
             }
         );

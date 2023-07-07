@@ -1,66 +1,9 @@
-const nav_bar = $('#side_nav')
-const open_nav_bar = $('#btn_open_sidenav')
-const close_nav_bar = $('#btn_close_sidenav')
-const zoom_in_icon = $('#zoom_in_icon')
-const zoom_out_icon = $('#zoom_out_icon')
-const home_icon = $('#home_icon')
-const header_logo = $('#header_logo')
-
-
-if (nav_bar.hasClass('active')) {
-    open_nav_bar.hide();
-    close_nav_bar.click(function (e) {
-        e.preventDefault();
-        nav_bar.removeClass('active');
-        nav_bar.addClass('inactive')
-        nav_bar.hide();
-        open_nav_bar.show();
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            zoom_in_icon.show()
-            zoom_out_icon.show()
-            home_icon.show()
-            header_logo.show()
-        }
-    });
-}
-
-
-open_nav_bar.click(function (e) {
-    e.preventDefault();
-    nav_bar.removeClass('inactive');
-    nav_bar.addClass('active')
-    nav_bar.show();
-    open_nav_bar.hide();
-    if (window.matchMedia("(max-width: 768px)").matches) {
-        zoom_in_icon.hide()
-        zoom_out_icon.hide()
-        home_icon.hide()
-        header_logo.hide()
-    }
-})
-
-checkMediaQuery();
-
-$(window).resize(function() {
-  checkMediaQuery();
-});
-
-function checkMediaQuery() {
-  if (window.matchMedia("(max-width: 768px)").matches) {
-        nav_bar.removeClass('active');
-        nav_bar.addClass('inactive')
-        nav_bar.hide();
-        open_nav_bar.show();
-  } else {
-    nav_bar.removeClass('inactive');
-    nav_bar.addClass('active')
-    nav_bar.show();
-    open_nav_bar.hide();
-  }
-}
 
 var categorys_date = [];
-var categorys = []
+var indextemp
+var sideMenu = $('#side_menu');
+var toggleSideMenu = $('#toggle_container');
+var logo = $("#header");
 $(document).ready(function () {
     ChangeCategory(function (category) {
         PrintCategory(category)
@@ -69,6 +12,31 @@ $(document).ready(function () {
         indextemp = $(e.currentTarget).attr("data-index");
         ViewGarments(indextemp)
     });
+    $(document).on("click", ".card-container", function (e) {
+        indextemp = $(e.currentTarget).attr("data-index");
+        window.location.href = `/Germents/${indextemp}`;
+
+    });
+
+    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+        $(sideMenu).toggleClass('close');
+    }
+
+    $(toggleSideMenu).click(function (e) {
+        $(sideMenu).toggleClass('close');
+    });
+
+    $('#search').keyup(function () {
+        var search = $('#search').val();
+        if (search.length > 2) {
+            searchGarment(search);
+
+        }
+        if ($('#search').val().trim() == '') {
+            ViewGarments(indextemp)
+        }
+    })
+
 });
 
 function ChangeCategory(callback) {
@@ -76,6 +44,7 @@ function ChangeCategory(callback) {
         url: "/api/category",
         type: "get",
         success: function (response) {
+            indextemp=response[0].Id
             ViewGarments(response[0].Id)
             callback(response);
         },
@@ -100,26 +69,74 @@ function ViewGarments(id) {
 function PrintCategory(category) {
      var imprimir=" "
     category.forEach(function (opcion) {
-        imprimir+=`<a class="text-decoration-none ps-preview-btn-garment" data-index="${opcion.Id}"  >${opcion.Name}</a>`
+        imprimir+=`<li><a data-index="${opcion.Id}" class="ps-preview-btn-garment" >${opcion.Name}</a></li></a>`
     })
-    $("#category").html(`<li class="nav-item">`+imprimir+`</li>`)
-    console.log( categorys_date)
+    $("#category_garments").html(imprimir)
 }
 
 function PrintGarments(garment) {
     var imprimir=" "
     let ruta=garment.garments
     ruta.forEach(function (opcion) {
-        imprimir+=`<div class="cards-container text-center">
-                <div class="card m-3 g-col-6" style="width: 18rem;">
-                    <img src="/img/camisa-fs-formal-azul-claro-platxdezbufe41gs7kufx6eonyianr5m6bgdc5zwlo.png" class="card-img-top" alt="Camisa">
-                    <div class="card-body">
-                        <h5 class="card-title">${opcion.Description}</h5>
-                        <p class="card-text">Ref: ${opcion.Reference}</p>
-                        <a data-index="${opcion.Id}"  href="Germents/${opcion.Id}" class="btn btn-primary">Ver prenda</a>
+        let img=opcion.imggarments
+        img.forEach(function (item) {
+            if (item.Name==="frontal")  {
+            imprimir+=`<div class="card-container" data-index="${opcion.Id}">
+                <div class="card-img">
+                    <div class="card-label-container">
+                        <p class="card-label">${garment.Name}</p>
                     </div>
+                    <img src="/img/garments/${item.img_route}" alt="Blusa">
+                </div>
+
+                <div class="card-info">
+                    <h3>${opcion.Name}</h3>
+                    <p>Ref: ${opcion.Reference}</p>
                 </div>
             </div>`
+        }
+        })
+    })
+    $("#all_garments").html(imprimir)
+}
+function searchGarment(search) {
+    $.ajax({
+        url: "/api/search/garment/",
+        type: "post",
+        data:{
+            search:search
+        },
+        success: function (response) {
+            PrintGarmentssearch(response)
+        },
+        error: function (xhr, status, error) {
+            // Manejo de error
+        }
+    });
+}
+
+function PrintGarmentssearch(garment) {
+    var imprimir=" "
+    let ruta=garment
+    ruta.forEach(function (opcion) {
+        let img=opcion.imggarments
+        img.forEach(function (item) {
+            if (item.Name==="frontal")  {
+                imprimir+=`<div class="card-container" data-index="${opcion.Id}">
+                <div class="card-img">
+                    <div class="card-label-container">
+                        <p class="card-label">${opcion.category.Name}</p>
+                    </div>
+                    <img src="/img/garments/${item.img_route}" alt="Blusa">
+                </div>
+
+                <div class="card-info">
+                    <h3>${opcion.Name}</h3>
+                    <p>Ref: ${opcion.Reference}</p>
+                </div>
+            </div>`
+            }
+        })
     })
     $("#all_garments").html(imprimir)
 }

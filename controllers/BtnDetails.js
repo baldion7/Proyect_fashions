@@ -1,16 +1,18 @@
 import {BtnDetails} from "../models/BtnDetailsModel.js";
 import {ImgDetails} from "../models/ImgDetailsModel.js";
 import {ImgGarment} from "../models/ImgGarmentModel.js";
+import {ArmedInfo} from "../models/ArmedInfoModels.js";
+import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
+
 
 export const CreateBtnDetails = async (req, res) => {
-    const {name, description,coordinatesy,coordinatesx,armedinfoid,imggarmentid} = req.body;
+    const {name, description,coordinatesy,coordinatesx,imggarmentid} = req.body;
     try {
         const respuesta = await BtnDetails.create({
             Name: name,
             Description: description,
             CoordinatesY:coordinatesy,
             CoordinatesX:coordinatesx,
-            armedInfoId:armedinfoid,
             imggarmentId:imggarmentid
         });
         res.status(200).json(respuesta);
@@ -27,6 +29,12 @@ export const GetBtnDetails = async (req, res) => {
                 },
                 {
                     model:ImgGarment
+                },
+                {
+                    model:AllowArmedInfo,
+                    include:{
+                        model:ArmedInfo
+                    }
                 }
             ]
         });
@@ -42,7 +50,16 @@ export const GetBtnDetailsById = async (req, res) => {
             include:[
                 {
                     model:ImgDetails
-                }
+                },
+                {
+                    model:AllowArmedInfo,
+                    include:{
+                        model:ArmedInfo
+                    }
+                },
+                {
+                    model:ImgDetails
+                },
             ],
             where: {
                 Id: req.params.id
@@ -73,14 +90,13 @@ export const UpdateBtnDetails= async (req, res) => {
         }
     });
     if (!btndetails) return res.status(404).json({msg: "Datos no encontrados"});
-    const {name, description,coordinatesy,coordinatesx,armedinfoid,imggarmentid} = req.body;
+    const {name, description,coordinatesy,coordinatesx,imggarmentid} = req.body;
     try {
         const respuesta = await BtnDetails.update({
             Name: name,
             Description: description,
             CoordinatesY:coordinatesy,
             CoordinatesX:coordinatesx,
-            armedInfoId:armedinfoid,
             imggarmentId:imggarmentid
         }, {
             where: {

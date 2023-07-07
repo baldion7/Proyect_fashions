@@ -32,6 +32,20 @@ export const GetArmadiTutorialsById = async (req, res) => {
         res.status(500).json({msg: error.message});
     }
 };
+
+export const GetArmadiTutorialsGearmenById = async (req, res) => {
+    try {
+        const respuesta = await ArmadiTutorials.findAll({
+            where: {
+                garmentId: req.params.id
+            }
+        });
+        res.status(200).json(respuesta);
+    } catch (error) {
+        res.status(500).json({msg: error.message});
+    }
+};
+
 export const DeleteArmadiTutorials = async (req, res) => {
     try {
         const respuesta = await ArmadiTutorials.destroy({

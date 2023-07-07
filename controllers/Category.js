@@ -1,5 +1,10 @@
 import {Category} from "../models/CategoryModel.js";
 import {Garment} from "../models/GarmentModel.js";
+import {Models} from "../models/MoldsModel.js";
+import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
+import {TechnicalInfo} from "../models/TechnicalInfoModel.js";
+import {ArmedInfo} from "../models/ArmedInfoModels.js";
+import {ImgGarment} from "../models/ImgGarmentModel.js";
 
 export const CreateCategory = async (req, res) => {
     const {name, description} = req.body;
@@ -27,7 +32,20 @@ export const GetCategoryById = async (req, res) => {
         const respuesta = await Category.findOne({
             include:[
                 {
-                    model:Garment
+                    model:Garment,
+                    include:[{
+                        model:Models,
+                    },{
+                        model:ArmadiTutorials
+                    },{
+                        model:TechnicalInfo
+                    },{
+                        model:ArmedInfo
+                    },{
+                        model:ImgGarment,
+
+                    }
+                    ],
                 }
             ],
             where: {

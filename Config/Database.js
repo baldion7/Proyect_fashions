@@ -10,6 +10,7 @@ import {Category} from "../models/CategoryModel.js";
 import {BtnDetails} from "../models/BtnDetailsModel.js";
 import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
+import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
 
 const db = new Sequelize("portafolio", "root", "", {
     host: "localhost",
@@ -27,6 +28,7 @@ db.Models=Models.init(db,Sequelize);
 db.Roles=Roles.init(db,Sequelize);
 db.TechnicalInfo=TechnicalInfo.init(db,Sequelize);
 db.User=User.init(db,Sequelize);
+db.AllowArmedInfo=AllowArmedInfo.init(db,Sequelize)
 
 //foraneas de uno a muchos
 db.Category.hasMany(db.Garment, {
@@ -59,10 +61,15 @@ db.Garment.hasMany(db.ImgGarment, {
 });
 db.ImgGarment.belongsTo(db.Garment);
 //
-db.ArmedInfo.hasMany(db.BtnDetails, {
+db.ArmedInfo.hasMany(db.AllowArmedInfo, {
     onDelete: 'CASCADE'
 });
-db.BtnDetails.belongsTo(db.ArmedInfo);
+db.AllowArmedInfo.belongsTo(db.ArmedInfo);
+//
+db.BtnDetails.hasMany(db.AllowArmedInfo, {
+    onDelete: 'CASCADE'
+});
+db.AllowArmedInfo.belongsTo(db.BtnDetails);
 //
 db.ImgGarment.hasMany(db.BtnDetails, {
     onDelete: 'CASCADE'
@@ -78,5 +85,10 @@ db.BtnDetails.hasMany(db.ImgDetails, {
     onDelete: 'CASCADE'
 });
 db.ImgDetails.belongsTo(db.BtnDetails)
+//
+db.BtnDetails.hasMany(db.ImgDetails, {
+    onDelete: 'CASCADE'
+});
+
 
 export default db;

@@ -6,7 +6,8 @@ import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {ImgGarment} from "../models/ImgGarmentModel.js";
 import {BtnDetails} from "../models/BtnDetailsModel.js";
 import {ImgDetails} from "../models/ImgDetailsModel.js";
-
+import {Category} from "../models/CategoryModel.js";
+import { Sequelize } from 'sequelize';
 export const CreateGarment = async (req, res) => {
     const {reference,name,garmentid} = req.body;
     try {
@@ -118,5 +119,33 @@ export const UpdateGarment = async (req, res) => {
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
+    }
+};
+
+export const SearchGarment = async (req, res) => {
+    try {
+        const {search} = req.body;
+        const garments = await Garment.findAll({
+            where: {
+                [Sequelize.Op.or]: [
+                    { Name: { [Sequelize.Op.like]: `%${search}%` } },
+                    { Reference: { [Sequelize.Op.like]: `%${search}%` } }
+                ]
+            },
+            include: [
+                {
+                    model: Category
+                },
+
+                {
+                    model: ImgGarment,
+
+                }
+            ]
+        });
+
+        res.status(200).json(garments);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
     }
 };

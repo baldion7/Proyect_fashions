@@ -17,6 +17,9 @@ import Users from "./routes/UsersRouter.js";
 import Roles from "./routes/RolesRouter.js";
 import ArmadiTutorials from "./routes/ArmadiTutorials.js";
 import Views from "./routes/ViewRouter.js";
+import Pdf from "./routes/PdfRouter.js";
+import PDFDocument from "pdfkit";
+
 
 dotenv.config();
 
@@ -60,7 +63,7 @@ app.use(Users);
 app.use(Roles);
 app.use(ArmadiTutorials);
 app.use(Views);
-
+app.use(Pdf);
 app.set('view engine', 'ejs');
 app.set('view cache', false);
 app.use('public', express.static(new URL('./public', import.meta.url).pathname));
@@ -70,10 +73,22 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
-/*app.use((req, res, next) => {
-    res.status(404).redirect('/');
+
+app.get('/generar-pdf', (req, res) => {
+    // Crear un nuevo documento PDF
+    const doc = new PDFDocument();
+
+    // Generar el contenido del PDF
+    doc.text('¡Hola, mundo! Este es un PDF generado desde el backend.');
+
+    // Establecer las cabeceras adecuadas para descargar el archivo PDF
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=archivo.pdf');
+
+    // Pipe el contenido del PDF al response para que el cliente pueda descargarlo
+    doc.pipe(res);
+    doc.end();
 });
-*/
 store.sync();
 
 app.listen(process.env.APP_PORT,()=>{

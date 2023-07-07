@@ -2,134 +2,148 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/c89d5783e0.js" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/principal.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/ViewMenu.css">
+    <link rel="stylesheet" href="/css/Viewgarment.css" />
+    <link rel="stylesheet" media="screen, projection" href="/css/drift-basic.css" />
+    <script src="https://kit.fontawesome.com/c89d5783e0.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon">
 </head>
 
-<body style="background-color: transparent;">
-
-<nav>
-    <div class="nav-menu">
-        <div class="btn-all-garments">
-            <a href="/" type="button" class="btn btn-light btn-rounded">Ver menu</a>
-           
-        </div>
-        <div class="logo-company">
-            <i class="fa-solid fa-gem"></i>
-        </div>
-        <div class="btn-nav">
-            <i class="fa-solid fa-house" style=" padding-right: 7%;"></i>
-            <button class="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"
-                                       style=" padding-right: 7%;"></i></button>
-            <button class="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"
-                                        style=" padding-right: 7%;"></i></button>
-
-
-        </div>
+<body>
+<input type="hidden" name="" id="id_germants" value="<%= id %>">
+<input type="hidden" name="" id="id_rol" value="<%= rol %>">
+<div class="men-top">
+    <div>
+        <a class="all-garments" href="/">
+            <div class="all-garments-icon">
+                <img src="/img/logo.svg" alt="" />
+                <img src="/img/btn/all-garments-icon.svg" alt="" />
+            </div>
+            <div class="all-garments-text">
+                <span for="">Ver otras prendas</span>
+            </div>
+        </a>
     </div>
-</nav>
-<div class="container-garments-btn">
-    <div class="title-garments-ref" id="title-garments-ref-movil">
-        <h2>Blusa para amarrar con cinturón | Ref: Margarita</h2>
+    <div class="title-graments">
+        <label id="title_general"></label>
+        <label id="title_reference"></label>
     </div>
-    <div id="container_img_garments">
-    </div>
-    <div class="container-moldel">
-        <div class="title-garments-ref" id="title-garments-ref-web">
-            <h2>Blusa para amarrar con cinturón | Ref: Margarita</h2>
+</div>
+<div>
+    <div class="content-garment-img">
+        <div class="img-garment-btn">
+            <button class="btn-arrows-garments btn-arrows-garments-left">
+                <img src="/img/btn/flechaiz.svg" alt="" class="img-arrows-garments">
+            </button>
+            <div id="container_img_garments">
+
+            </div>
+            <button class="btn-arrows-garments btn-arrows-garments-right">
+                <img src="/img/btn/flechader.svg" alt="" class="img-arrows-garments">
+            </button>
         </div>
-        <div class="container-moldel-img">
-            <img src="/img/Captura_de_pantalla_2023-05-15_122013-removebg-preview.png" alt=""
-                 style="width: 100%; height: 100%; border-radius: 12px;">
+        <div class="img-molds-btn">
+            <div class="prueba" id="moldes">
+
+            </div>
+
         </div>
     </div>
 </div>
-<div class="container-indications">
-    <div class="container-indications-div">
-        <div class="title-indications">
-            <h1>Indicaciones</h1>
+<div class="container-btn-phone">
+    <button class="btn-arrows-garments-2 btn-arrows-garments-left">
+        <img src="/img/btn/flechaiz.svg" alt="" class="img-arrows-garments">
+    </button>
+
+    <button class="btn-arrows-garments-2 btn-arrows-garments-right">
+        <img src="/img/btn/flechader.svg" alt="" class="img-arrows-garments">
+    </button>
+</div>
+<div class="conteiner">
+    <div class="content-date">
+        <div class="video-tutorial">
+            <div class="video-tutorial-contenido" id="video_tutorial_contenido">
+                <img src="/img/Frame 5.png" alt="">
+            </div>
         </div>
-        <div class="subtitle-indications">
-            <h3>Blusa para ammarar con cinturón, mangas de pellizcos, y puños encauchados</h3>
-        </div>
-        <div class="indications">
-            <label for=""><i class="fa-solid fa-circle"></i> Puños encauchados con caucho de 23 cm de largo</label>
-            <label for=""><i class="fa-solid fa-circle"></i> Tener en cuenta piquetes en la manga para
-                pellizcos</label>
-            <label for=""><i class="fa-solid fa-circle"></i> Dobladillo de blusa 1 a 1</label>
-            <label for=""><i class="fa-solid fa-circle"></i> Dobladillo border cinturon 1 a 1</label>
-            <label for=""><i class="fa-solid fa-circle"></i> Marquilla ubicacion de forma vertical centro
-                espalda</label>
-            <label for=""><i class="fa-solid fa-circle"></i> Instrucciones de lavado en costado derecho</label>
+        <div class="instructions-garment" id="instructions_garment">
+            <div class="instructions-garment-content">
+                <h1>Instructivo de la prenda</h1>
+                <p>
+                <ul id="instructions-garments-text">
+
+                </ul>
+                </p>
+            </div>
+
         </div>
     </div>
 </div>
-<div class="container-video">
-    <div class="cotainer-tutorial-video">
-        <img src="/img/sewing-process-on-a-sewing-machine-a-needle-with-a-thread-and-a-holder-close-up-stitch-the-white-checkered-fabric-video.jpg"
-             alt="" style="width: 100%; border-radius: 12px; ">
+<div class="suggestions-garment">
+    <div class="suggestions-garment-title">
+        <h1>Otras prendas similares</h1>
+    </div>
+    <div class="suggestions-garment-cards" id="suggestions_garment_cards">
+
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="floating-container">
+    <div class="floating-button">+</div>
+    <div class="element-container">
+         <span class="float-element material-symbols-outlined zoom-in">
+          <i class="material-icons">zoom_in
+          </i>
+            </span>
+        <span class="float-element zoom-out">
+        <i class="material-icons">zoom_out
+        </i>
+      </span>
+        <a href="/"> <span class="float-element ">
+        <i class="material-icons">home</i>
+      </span>
+        </a>
+        <span class="float-element">
+        <i class="material-icons generatePdf">picture_as_pdf</i>
+      </span>
+    </div>
+</div>
+
+<div class="modal fade" id="detailsgarments" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header modal-header-container"
                  style="display: flex; align-items: center; justify-content: space-between;">
-                <h5 class="modal-title" id="exampleModalLabel">Mangas</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="modal_title"></h5>
+                <button type="button" class="btn-close  closemodal" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
 
 
             <div class="modal-body container-content-modal">
-                <div class="container-content-modal-img">
-                    <img src="/img/imagen_2023-05-16_080811280-removebg-preview.png" alt="">
+                <div class="container-content-modal-img" id="container_content_modal_img">
+
                 </div>
                 <div>
-                    <div class="container-content-modal-indications">
-                        <label for=""><i class="fa-solid fa-circle"></i> Puños encauchados con caucho de 23 cm de
-                            largo</label>
-                        <label for=""><i class="fa-solid fa-circle"></i> Tener en cuenta piquetes en la manga para
-                            pellizcos</label>
+                    <div class="container-content-modal-indications" >
+                        <div id="container_content_modal_indications" ></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer" style="display: flex; align-items: center; justify-content: center;">
-                <button type="button" class="btn btn-primary btn-rounded" data-mdb-dismiss="modal">Regresar</button>
+                <button type="button" class="btn btn-primary btn-rounded closemodal" data-mdb-dismiss="modal">Regresar</button>
             </div>
         </div>
     </div>
 </div>
-<div class="zoom-buttons">
-    <button class="zoom-in">+</button>
-    <button class="zoom-out">-</button>
-</div>
-
-<footer class="text-center text-lg-start bg-light text-muted">
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <div class="row mt-3">
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Industrias de moda
-                    </h6>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="https://coudit.com/">Hecho por: COUDIT 2023</a>
-    </div>
-</footer>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://zachleat.github.io/BigText/dist/bigtext.js"></script>
+<script src="/lib/jquery-3.6.4.js"></script>
+<script src="/lib/Drift.js"></script>
 <script src="/js/Viewgarment.js"></script>
+
 </body>
 
 </html>
