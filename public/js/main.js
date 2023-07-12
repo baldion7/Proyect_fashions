@@ -37,6 +37,14 @@ $(document).ready(function () {
         }
     })
 
+    $("#btn-logout").click(function () {
+        $("#logout").modal("show");
+    })
+
+    $(".btn-close-modal").click(function () {
+        $("#logout").modal("hide");
+    })
+
 });
 
 function ChangeCategory(callback) {

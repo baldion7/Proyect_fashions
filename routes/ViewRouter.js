@@ -1,8 +1,10 @@
 import express from "express";
-import {GarmentView} from "../controllers/View.js";
-import {verifyUser, adminOnly} from "../middleware/AuthUser.js";
+import {GarmentView,AllGarmentView,LoginView} from "../controllers/View.js";
+import {verifyUser, adminOnly,AtchUser} from "../middleware/AuthUser.js";
 
 const router = express.Router();
-router.get('/Germents/:id',GarmentView);
+router.get('/Germents/:id',verifyUser,GarmentView);
+router.get('/Germent',verifyUser,AllGarmentView);
+router.get ('/',AtchUser,LoginView)
 
 export default router;

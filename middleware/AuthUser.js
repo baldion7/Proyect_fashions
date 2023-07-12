@@ -58,31 +58,34 @@ export const requireLogin = async (req, res, next) => {
         return res.redirect('/login');
     }
 
-    req.userId = user.id;
-    req.role = user.role;
-
-    if (user.role === 'admin') {
-        return res.redirect('/admin');
+    if (user.role.Name === 'admin') {
+        return res.redirect('/Germent');
     } else {
-        return res.redirect('/user');
+        return res.redirect('/Germent');
     }
 };
-export const AtchUser= async (req,res,next)=>{
-    if (!req.session.userId){
-        return  res.redirect('/login');
-    }
-    const user= await User.findOne({
-        where:{
-            id: req.session.userId
+export const AtchUser= async (req,res,next)=> {
+    if (!req.session.userId) {
+        next();
+    } else if (req.session.userId) {
+        {
+            const user = await User.findOne({
+                where: {
+                    Id: req.session.userId
+                },
+                include:{
+                    model: Roles
+                }
+            });
+            if (!user) {
+                return res.redirect('/login');
+            }
+            ;
+            if (user.role.Name !== "admin") {
+                return res.redirect('/Germent');
+            } else {
+                return res.redirect('/Germent');
+            }
         }
-    });
-    if (!user) {
-        return res.redirect('/login');
-    };
-    if (user.role!=="admin"){
-        return res.redirect('/user');
-    }else{
-        return res.redirect('/admin');
     }
-
 }

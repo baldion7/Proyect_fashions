@@ -1,10 +1,13 @@
 import {User} from "../models/UserModel.js";
+import argon2 from 'argon2'
+import { Roles } from '../models/RolesModel.js'
 
 export const CreateUser = async (req, res) => {
     const {name, password, rolid} = req.body;
+    const hashPassword = await argon2.hash(password)
     try {
         const respuesta = await User.create({
-            Name: name, Password: password, rolId: rolid
+            Name: name, Password: hashPassword, roleId: rolid
         });
         res.status(200).json(respuesta);
     } catch (error) {
@@ -16,7 +19,7 @@ export const GetUser = async (req, res) => {
         const respuesta = await User.findAll({
             include:[
                 {
-                    model:User
+                    model:Roles
                 }
             ]
         });
@@ -64,9 +67,11 @@ export const UpdateUser = async (req, res) => {
     });
     if (!user) return res.status(404).json({msg: "Datos no encontrados"});
     const {name, password, rolid} = req.body;
+    const hashPassword = await argon2.hash(password);
     try {
         const respuesta = await User.update({
-            Name: name, Password: password, rolId: rolid
+            Name: name, Password: hashPassword, roleId: rolid
+
         }, {
             where: {
                 Id: user.Id
