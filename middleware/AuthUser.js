@@ -3,6 +3,7 @@ import {Roles} from "../models/RolesModel.js";
 export const verifyUser= async (req,res,next)=>{
     if (!req.session.userId){
         return res.render('pages/login', { title: 'Mi aplicación Node.js' });
+        
     }
     const user= await User.findOne({
         where:{
