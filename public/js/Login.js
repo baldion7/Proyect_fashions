@@ -12,4 +12,29 @@ $(document).ready(function() {
     }
   });
 
+  customAlert();
+
 });
+
+function customAlert() {
+  var button = $("h1");
+  var alert = $(".alert");
+
+  $(button).click(function (e) {
+      e.preventDefault();
+
+      if ($(alert).css("visibility") == "hidden") {
+          $(alert).css("visibility", "visible");
+          $(alert).toggleClass("active");
+      } else {
+          $(alert).css("visibility", "hidden");
+          $(alert).toggleClass("active");
+      }
+
+
+      setTimeout(() => {
+          $(alert).css("visibility", "hidden");
+          $(alert).toggleClass("active");
+      }, 5000);
+  });
+};

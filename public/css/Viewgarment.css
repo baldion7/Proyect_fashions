@@ -1,8 +1,22 @@
 :root {
     --blueberry: #6155e1;
     --strawberry: #e93460;
+
+    --body-color: #F2F2F2;
+    --primary-color: #6155E1;
+    --btn-color: #FFFFFF26;
+    --btn-hover-color: #FFFFFF40;
+    --btn-active-color: #FFFFFF73;
+    --secondary-color: #E93460;
+    --primary-text: #FFFFFF;
+    --secondary-text: #000000;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url(/fonts/Poppins/Poppins-Regular.ttf);
@@ -13,22 +27,64 @@
     src: url(/fonts/Poppins/Poppins-Bold.ttf);
 }
 
-html,body {
+*::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+*::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--btn-active-color);
+}
+
+* {
+    margin: 0%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+html,
+body {
     background: var(--blueberry);
     margin: 0%;
     width: 100vw;
 }
 
 body::-webkit-scrollbar {
-    width: 0%; /* Ancho de la barra de desplazamiento */
-    background-color: transparent; /* Color de fondo de la barra de desplazamiento */
+    width: 0%;
+    /* Ancho de la barra de desplazamiento */
+    background-color: transparent;
+    /* Color de fondo de la barra de desplazamiento */
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Color del "pulgar" de la barra de desplazamiento */
+    background-color: transparent;
+    /* Color del "pulgar" de la barra de desplazamiento */
 }
 
-p{
+h2.card-title {
+    font-weight: 700;
+    line-height: 40px;
+    font-size: 32px;
+    color: var(--secondary-text);
+    margin-bottom: 16px;
+    font-family: 'Poppins-bold';
+}
+
+p.popup-body-text {
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 32px;
+    color: var(--secondary-text);
+}
+
+p {
     margin-bottom: 0% !important;
 }
 
@@ -55,26 +111,31 @@ p{
     height: 43.371px;
     lighting-color: aliceblue;
 }
+
+.all-garments-container {
+    display: flex;
+}
+
 .all-garments {
     display: flex;
-    height: 64px;
-    padding: 0px 12px;
+    height: 100px;
+    width: 100%;
     align-items: center;
-    gap: 8px;
     background: transparent;
     border-color: transparent;
     text-decoration: none;
+    transition: var(--tran-02);
 }
 
-.all-garments:hover{
+a.all-garments-icons {
+    justify-content: end;
+}
+
+.all-garments:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.all-garments-icon {
-    width: 48px;
-    height: 48px;
-}
 .all-garments-icon img:nth-of-type(1) {
     display: none;
 }
@@ -83,13 +144,18 @@ p{
     color: #fff;
     font-size: 31px;
     font-family: "Poppins";
-    line-height: 32px;
+    display: flex;
+}
+
+.all-garments-text img {
+    width: 48px;
 }
 
 .title-graments {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-top: 20px;
 
 }
 
@@ -125,39 +191,57 @@ p{
     align-self: stretch;
     border-radius: 16px;
     background: #fff;
-
+    max-width: 50%;
 }
 
-.btn-arrows-garments,.btn-arrows-garments-2 {
+.btn-arrows-garments,
+.btn-arrows-garments-2 {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    width: 30%;
+    width: fit-content;
     border: transparent;
     background-color: transparent;
     cursor: pointer;
+    transition: var(--tran-02);
 }
-.btn-arrows-garments:hover,.btn-arrows-garments-2:hover,.closemodal:hover {
+
+.btn-arrows-garments:hover,
+.btn-arrows-garments-2:hover,
+.closemodal:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
 
-.btn-arrows-garments-2{
+.btn-arrows-garments-2 {
     display: none;
 }
 
 .img-arrows-garments {
-    width: 10vh;
+    width: 96px;
+}
+
+#container_img_garments {
+    width: 60%;
+    height: 400px;
+
+}
+
+#container_img_garments div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #container_img_garments img:nth-of-type(1) {
-    width: 100%;
+    height: 100%;
 }
 
 #container_img_garments img:nth-of-type(2) {
-    width: 100%;
+    height: 100%;
 }
+
 .img-molds-btn {
     position: relative;
     display: flex;
@@ -172,12 +256,12 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 300px;
 }
 
 .img-molds-btn img:nth-of-type(1) {
     width: 100%;
 }
+
 .content-date {
     display: flex;
     width: 100%;
@@ -188,15 +272,23 @@ p{
     border-radius: 48px 48px 0px 0px;
     background: #fff;
 }
+
 .video-tutorial {
     display: flex;
     align-items: flex-start;
     gap: 8px;
     align-self: stretch;
+    width: 100%;
+    transition: var(--tran-03);
 }
+
+.video-tutorial:hover {
+    transform: scale(1.02);
+}
+
 .video-tutorial-contenido {
     display: flex;
-    width: 100%;
+    width: 65%;
     flex-direction: column;
     align-items: center;
     gap: 24px;
@@ -220,7 +312,7 @@ p{
 }
 
 .video-tutorial-contenido img:nth-of-type(1) {
-    width: 100%;
+    width: 65%;
     flex-shrink: 0;
 }
 
@@ -248,20 +340,23 @@ p{
     justify-content: center;
 }
 
-.instructions-garment-content h1:nth-of-type(1), .videos-tutoriasl h1:nth-of-type(1){
+.instructions-garment-content h1:nth-of-type(1),
+.videos-tutoriasl h1:nth-of-type(1) {
     color: #000;
     font-size: 47px;
     font-family: "Poppins";
     font-weight: 700;
     line-height: 64px;
 }
+
 .videos-tutoriasl h2 {
     color: #000;
     font-family: "Poppins";
     font-weight: 700;
     line-height: 64px;
 }
-#videoPlayer{
+
+#videoPlayer {
     width: 100%;
 }
 
@@ -282,6 +377,7 @@ p{
     font-family: "Poppins";
     line-height: 32px;
 }
+
 .suggestions-garment {
     display: flex;
     min-height: 512px;
@@ -298,6 +394,7 @@ p{
     flex-shrink: 0;
     align-self: stretch;
 }
+
 .suggestions-garment-title h1:nth-of-type(1) {
     color: #fff;
     text-align: center;
@@ -329,6 +426,7 @@ p{
     background: #fff;
     margin-bottom: 88px;
 }
+
 .img-suggestions-garment-cards {
     display: flex;
     height: 300px;
@@ -342,6 +440,7 @@ p{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .img-suggestions-garment-cards div:nth-last-of-type(1) {
     display: flex;
     height: 16px;
@@ -392,45 +491,40 @@ p{
     opacity: 1;
 }
 
-.Bubble {
-    width: 2em;
-    height: 2.4em;
+.Bubble,
+.bubble-exp {
+    width: 64px;
+    height: 64px;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 50%;
+    border-radius: 50% 50% 50% 10%;
     font-size: 1em;
     font-weight: bold;
     color: white;
     white-space: nowrap;
     border-color: transparent;
-    z-index: 1;
     background: var(--strawberry);
     filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.5));
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: var(--tran-02);
+    transform: rotate(-45deg);
 }
 
-.Bubble:hover {
+.Bubble:hover,
+.bubble-exp:hover {
     cursor: pointer;
-    zoom: 1.1;
+    scale: 1.1;
 }
 
-
-.Bubble:after {
-    position: absolute;
-    content: "";
-    top: calc(100% - 4px);
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background: var(--strawberry);
-    z-index: 0;
-    transform: translateX(-50%) rotate(45deg);
-}
-.Bubble img:nth-of-type(1) {
-    width: 1.875em !important;
+.Bubble i:nth-of-type(1),
+.bubble-exp i:nth-of-type(1),
+.bubble-exp i:nth-of-type(1) {
+    height: 34px !important;
+    font-size: 34px;
+    transform: rotate(45deg);
 }
 
 .conteiner {
@@ -438,31 +532,25 @@ p{
     align-items: center;
     justify-content: center;
 }
-.zoom-garment{
+
+.zoom-garment {
     display: none;
+    transition: none;
 }
-.container-btn-phone{
+
+.container-btn-phone {
+    padding: 0 32px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: 20px;
 }
 
-.card-container:hover {
-    cursor: pointer;
-    transform: scale(1.05);
+.container-content-modal-img {
+    height: 100%;
+    border-radius: 15px;
 }
 
-.card-container .card-img {
-    height: 192px;
-    display: flex;
-    position: relative;
-    justify-content: center;
-}
-.container-content-modal-img {
-     height: 100%;
-     border-radius: 15px;
- }
 .container-content-modal-indications {
     position: relative;
     display: flex;
@@ -470,10 +558,11 @@ p{
     width: auto;
     padding: 2%;
     border-radius: 15px;
-    margin-left: 3%;
-    min-height: 300px;
+    margin: 0 0 16px 3%;
+    min-height: 200px;
     justify-content: center;
 }
+
 .container-content-modal div:nth-of-type(2) {
     width: 100%;
     display: flex;
@@ -489,6 +578,32 @@ p{
     flex-direction: row;
 }
 
+.card-container {
+    width: 192px;
+    height: auto;
+    padding: 8px;
+    min-width: 192px;
+    border-radius: 8px;
+    transition: var(--tran-03);
+    word-wrap: break-word;
+    background-color: var(--primary-text);
+    cursor: pointer;
+}
+
+.card-container:hover,
+.btn-close-modal:hover,
+.btn-close-logout:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.card-container .card-img {
+    height: 192px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
 .card-container .card-img .card-label-container {
     top: 0;
     right: 0;
@@ -498,7 +613,7 @@ p{
     position: absolute;
     border-radius: 4px;
     width: fit-content;
-    align-items: center;
+
     justify-content: center;
     background-color: var(--secondary-color);
 }
@@ -541,41 +656,50 @@ p{
     line-height: 12px;
     font-family: 'Poppins';
 }
+
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+
 @-webkit-keyframes come-in {
     0% {
         -webkit-transform: translatey(100px);
         transform: translatey(100px);
         opacity: 0;
     }
+
     30% {
         -webkit-transform: translateX(-50px) scale(0.4);
         transform: translateX(-50px) scale(0.4);
     }
+
     70% {
         -webkit-transform: translateX(0px) scale(1.2);
         transform: translateX(0px) scale(1.2);
     }
+
     100% {
         -webkit-transform: translatey(0px) scale(1);
         transform: translatey(0px) scale(1);
         opacity: 1;
     }
 }
+
 @keyframes come-in {
     0% {
         -webkit-transform: translatey(100px);
         transform: translatey(100px);
         opacity: 0;
     }
+
     30% {
         -webkit-transform: translateX(-50px) scale(0.4);
         transform: translateX(-50px) scale(0.4);
     }
+
     70% {
         -webkit-transform: translateX(0px) scale(1.2);
         transform: translateX(0px) scale(1.2);
     }
+
     100% {
         -webkit-transform: translatey(0px) scale(1);
         transform: translatey(0px) scale(1);
@@ -592,9 +716,11 @@ p{
     margin: 35px 25px;
     display: none;
 }
+
 .floating-container:hover {
     height: 350px;
 }
+
 .floating-container:hover .floating-button {
     box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6);
     -webkit-transform: translatey(5px);
@@ -602,22 +728,27 @@ p{
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 .floating-container:hover .element-container .float-element:nth-child(1) {
     -webkit-animation: come-in 0.4s forwards 0.2s;
     animation: come-in 0.4s forwards 0.2s;
 }
+
 .floating-container:hover .element-container .float-element:nth-child(2) {
     -webkit-animation: come-in 0.4s forwards 0.4s;
     animation: come-in 0.4s forwards 0.4s;
 }
+
 .floating-container:hover .element-container .float-element:nth-child(3) {
     -webkit-animation: come-in 0.4s forwards 0.6s;
     animation: come-in 0.4s forwards 0.6s;
 }
+
 .floating-container:hover .element-container .float-element:nth-child(4) {
     -webkit-animation: come-in 0.4s forwards 0.8s;
     animation: come-in 0.4s forwards 0.8s;
 }
+
 .floating-container .floating-button {
     position: absolute;
     width: 65px;
@@ -642,6 +773,7 @@ p{
     justify-content: center;
 
 }
+
 .floating-container .float-element {
     position: relative;
     display: block;
@@ -658,18 +790,22 @@ p{
     -webkit-transform: translateY(100px);
     transform: translateY(100px);
 }
+
 .floating-container .float-element .material-icons {
     vertical-align: middle;
     font-size: 16px;
 }
+
 .floating-container .float-element:nth-child(1) {
     background: #42A5F5;
     box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
 }
+
 .floating-container .float-element:nth-child(2) {
     background: #4CAF50;
     box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
 }
+
 .floating-container .float-element:nth-child(3) {
     background: #FF9800;
     box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
@@ -679,38 +815,156 @@ p{
     background: #FF9800;
     box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
 }
-@media (max-width: 820px) {
 
-    .btn-arrows-garments{
-        display: none;
-    } .zoom-garment{
-          display: inline;
-      }
-    .imgprenda{
-        display: none;
-    }
-
-    .btn-arrows-garments-2{
-        display: inline;
-    }
-    .Bubble{
-        display: none;
-    }
-    .instructions-garment-content,.video-tutorial-contenido  {
-        width: 80%;
-    }
-    .floating-container{
-        display: inline;
-    }
+.detail-container#blur.active {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
 }
+
+.popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 640px;
+    max-width: 640px;
+    max-height: 700px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .3);
+    background-color: var(--primary-text);
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 13px;
+    transition: var(--tran-04);
+}
+
+.popup-scroll {
+    height: fit-content;
+    width: fit-content;
+}
+
+.popup.active {
+    visibility: visible;
+    opacity: 1;
+    top: 50%;
+}
+
+.popup-header {
+    padding: 32px;
+    border-radius: 13px 13px 0 0;
+    background-color: var(--primary-text);
+}
+
+a.accept {
+    position: relative;
+    padding: 8px 24px;
+    display: inline-block;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-text);
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Poppins';
+    transition: var(--tran-02);
+}
+
+a.accept:hover {
+    transform: scale(1.05);
+}
+
+a.cancel {
+    position: relative;
+    padding: 8px 12px;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--secondary-text);
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+.popup-body-img-medium {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img.popup-body-img-medium-img {
+    width: 160px;
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    border-radius: 0 0 13px 13px;
+    background-color: #EFEFEF;
+}
+
+.popup-video {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 768px;
+    max-width: 768px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .3);
+    background-color: var(--primary-text);
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 13px;
+}
+
+.popup-body-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p.popup-body-video-text {
+    margin-bottom: 32px;
+}
+
+.popup-body-video-text-img-medium {
+    margin-top: 12px;
+    width: 500px;
+    border-radius: 13px;
+}
+
+.popup-body-video-container {
+    display: flex;
+}
+
+.popup-body-video-img {
+    flex: 50%;
+    transition: none;
+}
+
+.container-content-modal-indications-text {
+    flex: 50%;
+}
+
+.zoom-modal{
+    width: 100%;
+}
+
 @media (max-width: 628px) {
     .all-garments-icon img:nth-of-type(1) {
-        height: 48px;
+        height: 90px;
+        width: 90px;
         background-color: transparent;
         transition: var(--tran-03);
         white-space: nowrap;
         display: inline;
     }
+
     .title-graments label:nth-of-type(1) {
         color: #fff;
         font-size: 37px;
@@ -726,14 +980,16 @@ p{
         line-height: 48px;
     }
 
-    .instructions-garment-content h1:nth-of-type(1), .videos-tutoriasl h1:nth-of-type(1) {
+    .instructions-garment-content h1:nth-of-type(1),
+    .videos-tutoriasl h1:nth-of-type(1) {
         color: #000;
         font-size: 25px;
         font-family: "Poppins";
         font-weight: 700;
         line-height: 64px;
     }
-    .videos-tutoriasl h2{
+
+    .videos-tutoriasl h2 {
         font-size: 18px;
     }
 
@@ -741,59 +997,183 @@ p{
     .all-garments-icon img:nth-of-type(2) {
         display: none;
     }
+
     .men-top {
         display: flex;
         flex-direction: column;
     }
-    .all-garments-text{
-        display: none;
+
+    .all-garments-text {
+        width: 170px;
+        font-size: 24px;
+        display: flex;
+        height: fit-content;
     }
-    .content-garment-img{
+
+    .all-garments-text img {
+        width: 30px;
+        margin-right: 8px;
+    }
+
+    .content-garment-img {
         display: flex;
         flex-direction: column-reverse;
     }
-    .btn-arrows-garments{
+
+    .btn-arrows-garments {
         display: none;
     }
-    .Bubble{
-        display: none;
+
+    .Bubble {
+        scale: 0.8;
     }
+
     .suggestions-garment-cards {
         gap: 16px;
         width: 100%;
         height: auto;
         display: grid;
         row-gap: 30px;
-        padding: 0px 200px 0px 200px;
+        padding: 0px 200px 30px 200px;
         justify-content: center;
         grid-template-columns: repeat(auto-fit, 192px);
 
     }
-    .instructions-garment-content,.video-tutorial-contenido  {
+
+    .instructions-garment-content,
+    .video-tutorial-contenido {
         width: 80%;
     }
-    .zoom-garment{
-        display: inline;
-    }
-    .imgprenda{
+
+    .zoom-garment {
         display: none;
+        transition: none;
     }
-    .btn-arrows-garments-2{
+
+    .imgprenda {
         display: inline;
     }
 
+    .btn-arrows-garments-2 {
+        display: inline;
+    }
+
+    .popup {
+        max-height: 700px;
+        max-width: 350px;
+    }
+
+    img.popup-body-img {
+        margin: 0;
+    }
+
+    .popup-body-img-medium {
+        flex-flow: column-reverse;
+        align-items: center;
+    }
+
+    .bubble-exp {
+        margin-bottom: 12px;
+    }
+
+
+    .popup-body-video-text-img-medium {
+        width: 286px;
+    }
+    
+    .img-garment-btn {
+        max-width: 100%;
+    }
+
+    .videos-tutoriasl {
+        width: 80%;
+    }
+
+    .popup-body-video-container{
+        flex-direction: column-reverse;
+    }
+}
+
+@media (min-width: 628px) and (max-width: 820px) {
+
+    .btn-arrows-garments {
+        display: none;
+    }
+
+    .zoom-garment {
+        display: none;
+        transition: none;
+    }
+
+    .imgprenda {
+        
+    }
+
+    .btn-arrows-garments-2 {
+        display: inline;
+    }
+
+    .Bubble {
+        scale: 0.8;;
+    }
+
+    .instructions-garment-content,
+    .video-tutorial-contenido,
+    .video-tutorial-contenido img:nth-of-type(1) {
+        width: 87%;
+        transition: var(--tran-03);
+    }
+
+    .floating-container {
+        display: inline;
+    }
+
+    .popup {
+        width: 470px;
+    }
+
+    .popup-scroll {
+        max-height: 100%    ;
+        overflow-y: scroll;
+    }
+
+    .popup-body-video-text-img-medium {
+        width: 406px;
+        ;
+    }
+
+    .videos-tutoriasl{ 
+        width: 87%;
+    }
+}
+
+@media all and (orientation:landscape) and (max-height: 619px) {
+    .popup {
+        max-height: 250px;
+        overflow-y: hidden;
+    }
+    
+    .popup-scroll {
+        max-height: 250px;
+        overflow-y: scroll;
+    }
 }
 
 .elemento {
-    opacity: 0; /* Inicialmente, establece la opacidad en 0 para que el elemento esté oculto */
-    animation: aparecer 1s ease-in-out forwards; /* Aplica la animación llamada "aparecer" durante 1 segundo */
+    opacity: 0;
+    /* Inicialmente, establece la opacidad en 0 para que el elemento esté oculto */
+    animation: aparecer 1s ease-in-out forwards;
+    /* Aplica la animación llamada "aparecer" durante 1 segundo */
 }
 
 @keyframes aparecer {
     0% {
-        opacity: 0; /* En el inicio de la animación, la opacidad es 0 */
+        opacity: 0;
+        /* En el inicio de la animación, la opacidad es 0 */
     }
+
     100% {
-        opacity: 1; /* Al final de la animación, la opacidad es 1 */
+        opacity: 1;
+        /* Al final de la animación, la opacidad es 1 */
     }
 }

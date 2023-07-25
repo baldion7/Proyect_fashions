@@ -2,6 +2,7 @@ var idgerments
 var btn = []
 var cont_img = 1;
 $(document).ready(function () {
+
     idgerments = $("#id_germants").val()
     idrol = $("#id_rol").val()
     changgerments()
@@ -18,7 +19,8 @@ $(document).ready(function () {
     $(document).on("click", ".Bubble", function (e) {
         indextempmodal = $(e.currentTarget).attr("data-index");
         modalviews(indextempmodal)
-        $("#detailsgarments").modal("show");
+        detailsModal();
+        /* $("#detailsgarments").modal("show"); */
 
     });
 
@@ -54,7 +56,9 @@ $(document).ready(function () {
         }
     });
 
-
+    if (!hasModalBeenShown()) {
+        onBoarding();
+    }
 });
 
 function changgerments() {
@@ -133,7 +137,8 @@ function changebtn(action) {
     btn.forEach((item) => {
         var ruta = item.botones
         ruta.forEach((botonConfig) => {
-            $("#" + botonConfig.id).html(`<img src="/img/btn/${botonConfig.texto}" alt="" >`)
+            //$("#" + botonConfig.id).html(`<img src="/img/btn/${botonConfig.texto}" alt="" >`)
+            $("#" + botonConfig.id).html(`<i class="fa-solid fa-magnifying-glass"></i>`)
         })
     })
 }
@@ -154,7 +159,7 @@ function crearContenedorImagen(config) {
             position: 'absolute',
             top: `${botonConfig.y}%`,
             left: `${botonConfig.x}%`,
-            transform: `translate(-${botonConfig.y}%, -${botonConfig.x}%)`,
+            transform: `translate(-${botonConfig.y}%, -${botonConfig.x}%) rotate(-45deg)`,
         })
             .attr({
                 tabindex: '-1',
@@ -412,8 +417,116 @@ function printvideo(response) {
 <video id="videoPlayer" controls>
     <source src="/video/${item.video_route}" type="video/mp4">
     Tu navegador no admite la reproducción de video.
-  </video>
-`
+    </video>
+    `
     })
     $("#video_tutorial_contenido").html(`<div class="videos-tutoriasl"><h1>Videos tutoriales</h1>${imp}</div>`)
+}
+
+function onBoarding() {
+    let button_next = $('#btn_next');
+    let button_exit = $('#button_exit');
+    let blur = $('#blur');
+    let popups = $('#popup, #popup_2, #popup_3, #detailsgarments');
+    let popup = $('#popup');
+    let popup_2 = $('#popup_2');
+    let popup_3 = $('#popup_3')
+    let body = $('body');
+
+    setTimeout(() => {
+        $(blur).toggleClass('active');
+        $(popup).toggleClass('active');
+        if ($(blur).hasClass('active')) {
+            $(body).css('overflow', 'auto');
+        } else {
+            $(body).css('overflow', 'auto');
+        }
+    }, 1000);
+
+    $(button_next).click(function (e) {
+        e.preventDefault();
+        $(popup).toggleClass('active');
+        $(blur).toggleClass('active');
+        setTimeout(() => {
+            $(popup_2).toggleClass('active');
+            $(blur).toggleClass('active');
+        }, 500);
+    });
+
+    $(button_next_2).click(function (e) {
+        e.preventDefault();
+        $(popup_2).toggleClass('active');
+        $(blur).toggleClass('active');
+        setTimeout(() => {
+            $(popup_3).toggleClass('active');
+            $(blur).toggleClass('active');
+        }, 500);
+    });
+
+    $(button_exit).click(function (e) {
+        e.preventDefault();
+        $(blur).toggleClass('active');
+        $(popups).removeClass('active');
+        $(body).css('overflow', 'auto');
+        setModalAsShown();
+    });
+
+    $(body).click(function (e) {
+        if ($(blur).hasClass('active')) {
+            $(blur).toggleClass('active');
+            $(popups).removeClass('active');
+            $(body).css('overflow', 'auto');
+        };
+    });
+
+    $(popups).click(function (e) {
+        if ($(blur).hasClass('active') && ($(popups).hasClass('active'))) {
+            e.stopPropagation();
+        };
+    });
+
+}
+
+function detailsModal() {
+    let blur = $('#blur');
+    let body = $('body');
+    let popup = $('#detailsgarments');
+    let btn_exit = $('#button_exit_2');
+
+    $(blur).toggleClass('active');
+    $(popup).toggleClass('active');
+
+    $(body).click(function (e) {
+        if ($(blur).hasClass('active')) {
+            $(blur).removeClass('active');
+            $(popup).removeClass('active');
+            $(body).css('overflow', 'auto');
+        };
+    });
+
+    $(popup).click(function (e) {
+        if ($(blur).hasClass('active') && ($(popup).hasClass('active'))) {
+            e.stopPropagation();
+        };
+    });
+
+    $(btn_exit).click(function (e) {
+        $(blur).removeClass('active');
+        $(popup).removeClass('active');
+        $(body).css('overflow', 'auto');
+    });
+}
+
+function setModalAsShown() {
+    localStorage.setItem('modalShown', 'true');
+
+}
+
+function setModalAsNoShown() {
+    localStorage.setItem('modalShown', 'false');
+
+}
+
+function hasModalBeenShown() {
+    return localStorage.getItem('modalShown') === 'true';
 }
