@@ -12,8 +12,9 @@ import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
 import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
 
-const db = new Sequelize("portafolio", "root", "", {
-    host: "localhost",
+const db = new Sequelize("portafolio", "admin", "AJ0YcSZjDj6UI5Qt2Nv9", {
+    port: 3306,
+    host: "127.0.0.1",
     dialect: "mysql",
     freezeTableName: true
 });
