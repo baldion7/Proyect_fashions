@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/Viewgarment.css" />
+    <link rel="stylesheet" media="screen, projection" href="/css/drift-basic.css" />
+    <script src="https://kit.fontawesome.com/c89d5783e0.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="detail-container" id="blur">
+
+        <input type="hidden" name="" id="id_germants" value="<%= id %>">
+        <input type="hidden" name="" id="id_rol" value="<%= rol %>">
+        <div class="men-top">
+            <div class="all-garments-container" style="width: 100%;">
+                <a class="all-garments" ip="all-garments" href="/">
+                    <div class="all-garments-text">
+                        <img src="/img/btn/flechaiz_white.svg" alt="<">
+                        <span for="">Ver otras prendas</span>
+                    </div>
+                </a>
+                <a class="all-garments all-garments-icons" ip="all-garments" href="/">
+                    <div class="all-garments-icon">
+                        <img src="/img/logo.png" alt="" />
+                    </div>
+                </a>
+            </div>
+            <div class="title-graments">
+                <label id="title_general"></label>
+                <label id="title_reference"></label>
+            </div>
+        </div>
+        <div>
+            <div class="content-garment-img">
+                <div class="img-garment-btn">
+                    <button class="btn-arrows-garments btn-arrows-garments-left">
+                        <img src="/img/btn/flechaiz.svg" alt="" class="img-arrows-garments">
+                    </button>
+                    <div id="container_img_garments">
+
+                    </div>
+                    <button class="btn-arrows-garments btn-arrows-garments-right">
+                        <img src="/img/btn/flechader.svg" alt="" class="img-arrows-garments">
+                    </button>
+                </div>
+                <div class="img-molds-btn">
+                    <div class="prueba" id="moldes">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-btn-phone">
+            <button class="btn-arrows-garments-2 btn-arrows-garments-left">
+                <img src="/img/btn/flechaiz.svg" alt="" class="img-arrows-garments">
+            </button>
+
+            <button class="btn-arrows-garments-2 btn-arrows-garments-right">
+                <img src="/img/btn/flechader.svg" alt="" class="img-arrows-garments">
+            </button>
+        </div>
+        <div class="conteiner">
+            <div class="content-date">
+                <div class="video-tutorial">
+                    <div class="video-tutorial-contenido" id="video_tutorial_contenido">
+                        <img src="/img/Frame 5.png" alt="">
+                    </div>
+                </div>
+                <div class="instructions-garment" id="instructions_garment">
+                    <div class="instructions-garment-content">
+                        <h1>Instructivo de la prenda</h1>
+                        <p>
+                        <ul id="instructions-garments-text">
+
+                        </ul>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="suggestions-garment">
+            <div class="suggestions-garment-title">
+                <h1>Otras prendas similares</h1>
+            </div>
+            <div class="suggestions-garment-cards" id="suggestions_garment_cards">
+
+            </div>
+        </div>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <div class="floating-container">
+            <div class="floating-button">+</div>
+            <div class="element-container">
+                <span class="float-element material-symbols-outlined zoom-in">
+                    <i class="material-icons">zoom_in
+                    </i>
+                </span>
+                <span class="float-element zoom-out">
+                    <i class="material-icons">zoom_out
+                    </i>
+                </span>
+                <a href="/"> <span class="float-element ">
+                        <i class="material-icons">home</i>
+                    </span>
+                </a>
+                <span class="float-element">
+                    <i class="material-icons generatePdf">picture_as_pdf</i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Prendas interactivas</h2>
+                <div class="popup-body popup-body-img-medium">
+                    <p class="popup-body-text">Dando click en los botones rojos podrás ver los detalles de la confección
+                        de
+                        la prenda.</p>
+                    <button tabindex="-1" aria-hidden="true" class="bubble-exp" id="btn1" data-index="1">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="btn_next">Entendido</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-video" id="popup_2">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Herramienta de zoom</h2>
+                <div class="popup-body-video">
+                    <p class="popup-body-text">Al pasar el mouse sobre la imagen dentro del detalle de la prenda podras
+                        hacer zoom.</p>
+                    <img class="popup-body-video-text-img-medium" src="/img/modals/zoom.gif" alt="Gif">
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_next_2">Entendido</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-video" id="popup_3">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Video tutorial</h2>
+                <div class="popup-body-video">
+                    <p class="popup-body-text">Al hacer click sobre la imagen del video podras ver un video tutorial
+                        sobre
+                        la confección de la prenda.</p>
+                    <img class="popup-body-video-text-img-medium" src="/img/Frame 5.png" alt="Gif">
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_exit">Entendido</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-video" id="detailsgarments">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title" id="modal_title"></h2>
+                <div class="popup-body-video-container">
+                    <div class="popup-body-video popup-body-video-img" id="container_content_modal_img">
+                    </div>
+                    <div class="container-content-modal-indications container-content-modal-indications-text">
+                        <div class="popup-body-text" id="container_content_modal_indications"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_exit_2">Regresar</a>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
+    <script src="/lib/jquery-3.6.4.js"></script>
+    <script src="/lib/Drift.js"></script>
+    <script src="/js/Viewgarment.js"></script>
+
+</body>
+
+</html>

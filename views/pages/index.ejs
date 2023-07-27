@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/ViewMenu.css">
+    <script src="https://kit.fontawesome.com/c89d5783e0.js" crossorigin="anonymous"></script>
+    <title>Prendas</title>
 </head>
+
 <body>
-<h1>hola</h1>
+    <div class="container" id="blur">
+        <nav id="side_menu" class="side-menu">
+            <header class="header" id="header">
+                <img src="/img/logo.png" alt="Icono buscar">
+            </header>
+            <div id="toggle_container" class="toggle-container">
+                <img src="/img/btn/arrow.svg" alt="<">
+            </div>
+            <div class="menu-list">
+                <p>CATEGORÍAS</p>
+                <ul id="category_garments"></ul>
+            </div>
+            <div class="container-logout">
+                <button id="btn-logout" data-toggle="modal" data-target="#logout"><i
+                        class="fa-solid fa-right-from-bracket"></i>Cerrar Sesión</button>
+            </div>
+        </nav>
+        <div class="main-side">
+            <form class="search-bar-container">
+                <input type="text" id="search" placeholder="Buscar prenda o código de referencia...">
+                <img id="btn_search" src="/img/btn/search-icon.svg" alt="Icono buscar">
+            </form>
+            <div class="cards-container" id="all_garments">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-scroll">
+            <div class="popup-body">
+                <h2 class="card-title">Cerrar sesión</h2>
+                <p class="popup-body-text">¿Estás seguro que deseas cerrar la sesión?</p>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="cancel" id="btn_cancel">Cancelar</a>
+                <a href="/api/logout" class="accept" id="btn_close">Sí, cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="popup popup-video" id="popup_2">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Menú lateral derecho</h2>
+                <div class="popup-body-video">
+                    <p class="popup-body-text">En el menú izquierdo podrás encontrar las categorías de las prendas de
+                        vestir.</p>
+                    <img class="popup-body-video-text-img-medium" src="/img/modals/zoom.gif" alt="Gif">
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_next">Entendido</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-video" id="popup_3">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Barra de búsqueda</h2>
+                <div class="popup-body-video">
+                    <p class="popup-body-text">En la barra de búsqueda podrás buscar prendas por su nombre, referencia o
+                        categoría.</p>
+                    <img class="popup-body-video-text-img-medium" src="/img/modals/zoom.gif" alt="Gif">
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_next_2">Entendido</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup-video" id="popup_4">
+        <div class="popup-scroll">
+            <div class="popup-header">
+                <h2 class="card-title">Muenú</h2>
+                <div class="popup-body-video">
+                    <p class="popup-body-text">En el menú, puedes encontrar todas las prendas por categoría o aquellas que
+                        coincidan con tu búsqueda. </p>
+                    <img class="popup-body-video-text-img-medium" src="/img/modals/zoom.gif" alt="Gif">
+                </div>
+            </div>
+            <div class="popup-footer">
+                <a href="#" class="accept" id="button_exit">Entendido</a>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/jquery-3.6.4.js"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>
