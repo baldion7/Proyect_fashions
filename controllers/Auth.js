@@ -1,92 +1,44 @@
-import {User} from "../models/UserModel.js";
-import {Roles} from "../models/RolesModel.js";
-export const verifyUser= async (req,res,next)=>{
-    if (!req.session.userId){
-       return res.redirect('/login');
-        
+import { User } from "../models/UserModel.js";
+import { Roles } from "../models/RolesModel.js";
+import argon2 from "argon2";
+export const Login = async (req, res) => {
+    const { usuario ,password} = req.body;
+    if (!usuario || !password) {
+        return res.status(400).json({ msg: "Ingrese un correo electrónico y una contraseña" });
     }
-    const user= await User.findOne({
-        where:{
-            Id: req.session.userId
+
+    const user = await User.findOne({
+        where: {
+            Name: usuario,
         },
         include: {
             model: Roles,
         },
     });
-    if (!user) {
-      return res.redirect('/login');
-    }
-    req.userId=user.Id;
-    req.role=user.role.Name;
 
-    next();
-}
-
-export const adminOnly= async (req,res,next)=>{
+    if (!user) return res.status(404).json({ msg: "Usuario no encontrado" });
+    const match = await argon2.verify(user.Password, password);
+    if (!match) return res.status(400).json({ msg: "Contraseñas incorrectas" });
+    req.session.userId = user.Id;
+    req.session.rolName = user.role.Name;
+    const rol = user.role.Name;
+    res.redirect(rol === "adminsitradores" ? "/admin" : "/Germent");
+};
+export const Me = async (req,res)=>{
     if (!req.session.userId){
-        return  res.redirect('/login');
+        return res.status(401).json({msg:"Por favor, ingrese a su cuenta"});
     }
     const user= await User.findOne({
         where:{
             id: req.session.userId
-        },include: {
-            model: Roles,
-        },
-    });
-    if (!user) {
-        return res.redirect('/login');
-    };
-    if (user.role.Name!=="admin"){
-        return res.redirect('/');
-    }
-    req.userId=user.id;
-    req.role=user.role.Name;
-    next();
-}
-export const requireLogin = async (req, res, next) => {
-    if (!req.session.userId) {
-        return next();
-    }
-
-    const user = await User.findOne({
-        where: {
-            id: req.session.userId
-        },
-
-    });
-
-    if (!user) {
-        return res.redirect('/login');
-    }
-
-    if (user.role.Name === 'admin') {
-        return res.redirect('/Germent');
-    } else {
-        return res.redirect('/Germent');
-    }
-};
-export const AtchUser= async (req,res,next)=> {
-    if (!req.session.userId) {
-        next();
-    } else if (req.session.userId) {
-        {
-            const user = await User.findOne({
-                where: {
-                    Id: req.session.userId
-                },
-                include:{
-                    model: Roles
-                }
-            });
-            if (!user) {
-                return res.redirect('/login');
-            }
-            ;
-            if (user.role.Name !== "admin") {
-                return res.redirect('/Germent');
-            } else {
-                return res.redirect('/Germent');
-            }
         }
-    }
+    });
+    if (!user) return res.status(404).json({msg:"Usuario no encontrado"});
+    res.status(200).json(user);
+};
+export const logOut = (req, res)=>{
+    req.session.destroy((err)=>{
+        if(err) return res.status(400).json({msg: "No puedo cerrar sesión"})
+        res.redirect("/");
+    })
 }
