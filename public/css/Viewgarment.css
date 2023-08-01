@@ -963,14 +963,19 @@ p.popup-body-video-text {
     border-radius: 20px;
 }
 
+
+element.style {
+}
 .img-trazo {
-    width: 40%;
+    width: 50%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: baseline;
 }
 
 .img-trazo img:nth-of-type(1) {
-    width: 80%;
+    object-fit: cover;
+    width: 100%;
 }
 
 @media (max-width: 628px) {
