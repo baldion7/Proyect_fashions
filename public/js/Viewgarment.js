@@ -320,6 +320,7 @@ function extra(response) {
     let ruta = response.molds
     ruta.forEach((item) => {
         $("#moldes").html(`<img src="${item.img_route}" alt="">`)
+        $("#img-trazo").html(`<img src="${item.img_route}" alt="">`)
     })
 
 }

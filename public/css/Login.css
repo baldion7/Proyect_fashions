@@ -49,7 +49,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: -1;
-    background-image: url('http://localhost:5001/img/vector 2.svg');
+    background-image: url('https://raw.githubusercontent.com/baldion7/contenido/88889ba619d5f9458228fa80e089de4bda8a1117/public/img/Vector%202.svg');
     background-position: top right;
     background-repeat: no-repeat;
     background-size: 30%;
@@ -68,7 +68,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: -1;
-    background-image: url('http://localhost:5001/img/vector 1.svg');
+    background-image: url('https://raw.githubusercontent.com/baldion7/contenido/88889ba619d5f9458228fa80e089de4bda8a1117/public/img/Vector%201.svg');
     background-position: bottom left;
     background-repeat: no-repeat;
     background-size: 30%;

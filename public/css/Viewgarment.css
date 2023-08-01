@@ -317,8 +317,8 @@ a.all-garments-icons {
     flex-shrink: 0;
 }
 
-.contenet-trazo-info{
-   width: 100%;
+.contenet-trazo-info {
+    width: 100%;
     display: flex;
     flex-direction: row;
 }
@@ -619,7 +619,7 @@ a.all-garments-icons {
     position: absolute;
     border-radius: 4px;
     width: fit-content;
-
+    z-index: 1;
     justify-content: center;
     background-color: var(--secondary-color);
 }
@@ -957,7 +957,7 @@ p.popup-body-video-text {
     flex: 50%;
 }
 
-.zoom-modal{
+.zoom-modal {
     max-height: 400px;
     max-width: 400px;
     border-radius: 20px;
@@ -969,7 +969,7 @@ p.popup-body-video-text {
     justify-content: flex-end;
 }
 
-.img-trazo img:nth-of-type(1){
+.img-trazo img:nth-of-type(1) {
     width: 80%;
 }
 
@@ -1098,7 +1098,7 @@ p.popup-body-video-text {
     .popup-body-video-text-img-medium {
         width: 286px;
     }
-    
+
     .img-garment-btn {
         max-width: 100%;
     }
@@ -1107,13 +1107,13 @@ p.popup-body-video-text {
         width: 80%;
     }
 
-    .popup-body-video-container{
+    .popup-body-video-container {
         flex-direction: column-reverse;
     }
 }
 
-@media (max-width: 628px){
-    .zoom-modal{
+@media (max-width: 628px) {
+    .zoom-modal {
         height: 300px;
         width: 100%;
     }
@@ -1130,7 +1130,7 @@ p.popup-body-video-text {
         transition: none;
     }
 
-    .zoom-modal{
+    .zoom-modal {
         height: 300px;
         width: 100%;
     }
@@ -1159,26 +1159,25 @@ p.popup-body-video-text {
     }
 
     .popup-scroll {
-        max-height: 100%    ;
+        max-height: 100%;
         overflow-y: scroll;
     }
 
     .popup-body-video-text-img-medium {
-        width: 406px;
-        ;
+        width: 406px;;
     }
 
-    .videos-tutoriasl{ 
+    .videos-tutoriasl {
         width: 87%;
     }
 }
 
-@media all and (orientation:landscape) and (max-height: 619px) {
+@media all and (orientation: landscape) and (max-height: 619px) {
     .popup {
         max-height: 250px;
         overflow-y: hidden;
     }
-    
+
     .popup-scroll {
         max-height: 250px;
         overflow-y: scroll;
