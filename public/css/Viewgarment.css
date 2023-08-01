@@ -296,6 +296,7 @@ a.all-garments-icons {
     border-radius: 24px;
     padding-bottom: 30px;
     cursor: pointer;
+    margin-top: 2%;
 }
 
 .video-tutorial-contenido label:nth-of-type(1) {
@@ -316,11 +317,16 @@ a.all-garments-icons {
     flex-shrink: 0;
 }
 
-.instructions-garment {
-    width: 100%;
+.contenet-trazo-info{
+   width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+}
+
+.instructions-garment {
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
     flex-direction: column;
 }
 
@@ -493,8 +499,8 @@ a.all-garments-icons {
 
 .Bubble,
 .bubble-exp {
-    width: 64px;
-    height: 64px;
+    width: 44px;
+    height: 44px;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 50% 50% 50% 10%;
@@ -522,8 +528,8 @@ a.all-garments-icons {
 .Bubble i:nth-of-type(1),
 .bubble-exp i:nth-of-type(1),
 .bubble-exp i:nth-of-type(1) {
-    height: 34px !important;
-    font-size: 34px;
+    height: 24px !important;
+    font-size: 24px;
     transform: rotate(45deg);
 }
 
@@ -840,7 +846,7 @@ a.all-garments-icons {
 
 .popup-scroll {
     height: fit-content;
-    width: fit-content;
+
 }
 
 .popup.active {
@@ -952,7 +958,19 @@ p.popup-body-video-text {
 }
 
 .zoom-modal{
-    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    border-radius: 20px;
+}
+
+.img-trazo {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-trazo img:nth-of-type(1){
+    width: 80%;
 }
 
 @media (max-width: 628px) {
@@ -1094,6 +1112,13 @@ p.popup-body-video-text {
     }
 }
 
+@media (max-width: 628px){
+    .zoom-modal{
+        height: 300px;
+        width: 100%;
+    }
+}
+
 @media (min-width: 628px) and (max-width: 820px) {
 
     .btn-arrows-garments {
@@ -1105,8 +1130,9 @@ p.popup-body-video-text {
         transition: none;
     }
 
-    .imgprenda {
-        
+    .zoom-modal{
+        height: 300px;
+        width: 100%;
     }
 
     .btn-arrows-garments-2 {
@@ -1114,7 +1140,7 @@ p.popup-body-video-text {
     }
 
     .Bubble {
-        scale: 0.8;;
+        scale: 0.8;
     }
 
     .instructions-garment-content,
@@ -1157,6 +1183,7 @@ p.popup-body-video-text {
         max-height: 250px;
         overflow-y: scroll;
     }
+
 }
 
 .elemento {

@@ -1,4 +1,3 @@
-import { Sequelize } from "sequelize";
 import {User} from "../models/UserModel.js";
 import {TechnicalInfo} from "../models/TechnicalInfoModel.js";
 import {Roles} from "../models/RolesModel.js";
@@ -11,6 +10,9 @@ import {BtnDetails} from "../models/BtnDetailsModel.js";
 import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {ArmadiTutorials} from "../models/ArmadiTutorialsModel.js";
 import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
+import { GarmentFinishInfo } from '../models/GarmentFinishInfoModel.js'
+import { OperatingProcess } from '../models/OperatingProcessModel.js'
+import { Sequelize } from 'sequelize'
 
 const db = new Sequelize("portafolio", "root", "admin123", {
     host: "62.72.5.157",
@@ -28,7 +30,9 @@ db.Models=Models.init(db,Sequelize);
 db.Roles=Roles.init(db,Sequelize);
 db.TechnicalInfo=TechnicalInfo.init(db,Sequelize);
 db.User=User.init(db,Sequelize);
-db.AllowArmedInfo=AllowArmedInfo.init(db,Sequelize)
+db.AllowArmedInfo=AllowArmedInfo.init(db,Sequelize);
+db.GarmnetFinishInfo=GarmentFinishInfo.init(db,Sequelize);
+db.OperatingProcess=OperatingProcess.init(db,Sequelize);
 
 //foraneas de uno a muchos
 db.Category.hasMany(db.Garment, {
@@ -50,6 +54,16 @@ db.Garment.hasMany(db.ArmadiTutorials, {
     onDelete: 'CASCADE'
 });
 db.ArmadiTutorials.belongsTo(db.Garment);
+//
+db.Garment.hasMany(db.OperatingProcess, {
+    onDelete: 'CASCADE'
+});
+db.OperatingProcess.belongsTo(db.Garment);
+//
+db.Garment.hasMany(db.GarmnetFinishInfo, {
+    onDelete: 'CASCADE'
+});
+db.GarmnetFinishInfo.belongsTo(db.Garment);
 //
 db.Garment.hasMany(db.ArmedInfo, {
     onDelete: 'CASCADE'

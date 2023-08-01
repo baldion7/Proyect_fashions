@@ -19,9 +19,8 @@ $(document).ready(function () {
     $(document).on("click", ".Bubble", function (e) {
         indextempmodal = $(e.currentTarget).attr("data-index");
         modalviews(indextempmodal)
-        detailsModal();
+            detailsModal()
         /* $("#detailsgarments").modal("show"); */
-
     });
 
     $('.generatePdf').click(function () {
@@ -91,7 +90,7 @@ function botones(response) {
             }));
 
             const nuevoObjeto = {
-                urlImagen: `/img/garments/${item.img_route}`,
+                urlImagen: `${item.img_route}`,
                 botones: botones,
                 colorBoton: '#0077FF',
                 zoom: true,
@@ -110,7 +109,7 @@ function botones(response) {
             }));
 
             const nuevoObjeto = {
-                urlImagen: `/img/garments/${item.img_route}`,
+                urlImagen: `${item.img_route}`,
                 botones: botones,
                 colorBoton: '#0077FF',
                 zoom: true,
@@ -171,7 +170,6 @@ function crearContenedorImagen(config) {
 
         contenedor.append(boton);
         botones.push(boton);
-
     });
     const imagens = $("<img>")
         .attr({
@@ -195,28 +193,27 @@ function zoom() {
 }
 
 function instructions(response) {
-    var ruta = response.armedInfos
+    var ruta = response.technicalinfos
     var imp = ""
     ruta.forEach((item) => {
         imp += `<li class="punts-instructions-garment">${item.Description}</li>`
     })
     $("#instructions-garments-text").html(imp)
 
-    if (idrol == 1) {
         imp = ""
-        ruta = response.technicalinfos
+        ruta = response.operatingprocesses
         ruta.forEach((item) => {
             imp += `<li class="punts-instructions-garment">${item.Description}</li>`
         })
         $("#instructions_garment").append(`<div class="instructions-garment-content" >
-                <h1>Armado de la prenda</h1>
+                <h1>Proceso operativo</h1>
                 <p>
                 <ul id="instructions-garments-text">
                 ${imp}
                 </ul>
                 </p>
             </div>`)
-    }
+
     var fontElement = $('.punts-instructions-garment');
     $('.zoom-in').click(function () {
         var currentFontSize = parseInt(fontElement.css('font-size'));
@@ -262,7 +259,7 @@ function printrecommends(response) {
                     <div class="card-label-container">
                         <p class="card-label">${response.Name}</p>
                     </div>
-                    <img src="/img/garments/${items.img_route}" alt="Blusa">
+                    <img src="${items.img_route}" alt="Blusa">
                 </div>
 
                 <div class="card-info">
@@ -297,7 +294,7 @@ function printrecommends(response) {
                     <div class="card-label-container">
                         <p class="card-label">${garment.Name}</p>
                     </div>
-                    <img src="/img/garments/${items.img_route}" alt="Blusa">
+                    <img src="${items.img_route}" alt="Blusa">
                 </div>
 
                 <div class="card-info">
@@ -322,7 +319,7 @@ function extra(response) {
     $("#title_general").html(response.Name)
     let ruta = response.molds
     ruta.forEach((item) => {
-        $("#moldes").html(`<img src="/img/molds/${item.img_route}" alt="">`)
+        $("#moldes").html(`<img src="${item.img_route}" alt="">`)
     })
 
 }
@@ -348,7 +345,7 @@ function printmodal(response) {
         imp += ` <label for=""><i class="fa-solid fa-circle"></i> ${item.armedInfo.Description}</label>`
     })
     $("#container_content_modal_indications").html(imp);
-    $("#container_content_modal_img").html(`<img src="/img/details/${response.imgdetails[0].img_route}" data-zoom="/img/details/${response.imgdetails[0].img_route}" class="zoom-modal" alt="">`)
+    $("#container_content_modal_img").html(`<img src="${response.imgdetails[0].img_route}" data-zoom="${response.imgdetails[0].img_route}" class="zoom-modal" alt="">`)
     zoommodal()
 }
 
@@ -382,8 +379,6 @@ function obtenerObjetoConNombreMasRepetido(array) {
 
     return objetoMasRepetido.armedInfo.Name;
 }
-
-
 
 function zoommodal() {
     new Drift(document.querySelector(".zoom-modal"), {
@@ -514,6 +509,9 @@ function detailsModal() {
         $(blur).removeClass('active');
         $(popup).removeClass('active');
         $(body).css('overflow', 'auto');
+        $("#modal_title").html(" ");
+        $("#container_content_modal_img").html(" ");
+        $("#container_content_modal_indications").html(" ");
     });
 }
 

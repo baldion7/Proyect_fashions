@@ -22,6 +22,19 @@ body {
     margin: 0%;
     background: var(--blueberry);
     height: 100vh;
+
+}
+
+.conteiner-prin{
+    isplay: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    height: 100%;
+    width: 100vw;
+    z-index: 1;
+    position: absolute;
 }
 
 .container-vector2 {
@@ -36,7 +49,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: -1;
-    background-image: url('/img/vector 2.svg');
+    background-image: url('http://localhost:5001/img/vector 2.svg');
     background-position: top right;
     background-repeat: no-repeat;
     background-size: 30%;
@@ -55,7 +68,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: -1;
-    background-image: url('/img/vector 1.svg');
+    background-image: url('http://localhost:5001/img/vector 1.svg');
     background-position: bottom left;
     background-repeat: no-repeat;
     background-size: 30%;

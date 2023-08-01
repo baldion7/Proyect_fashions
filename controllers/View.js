@@ -10,5 +10,6 @@ export const AllGarmentView = (req, res) => {
 };
 
 export const LoginView = (req, res) => {
+
     res.render('pages/Login', { title: 'Mi aplicación Node.js'});
 };

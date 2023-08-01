@@ -12,15 +12,16 @@
 </head>
 
 <body>
+<div class="conteiner-prin">
     <main class="container">
-        <form action="/api/login" method="post">
+        <form action="/api/login" method="post" id="loginForm">
             <h1>Iniciar sesión</h1>
             <div class="container-input-login">
                 <input type="text" name="usuario" class="input-login" placeholder="Usuario">
             </div>
             <div class="container-input-login">
                 <input type="password" name="password" class="input-login" id="passwordField" placeholder="Contraseña">
-                <span id="togglePassword" class="fa fa-eye"></span>
+                <span id="togglePassword" class="fa fa-eye-slash"></span>
             </div>
             <div class="btn-submit">
                 <button type="submit">Iniciar sesión</button>
@@ -37,6 +38,7 @@
     </div>
     <div class="container-vector1">
     </div>
+</div>
     <script src="/lib/jquery-3.6.4.js"></script>
     <script src="/js/Login.js"></script>
 </body>

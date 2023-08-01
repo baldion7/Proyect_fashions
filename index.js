@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
-import db from "./Config/Database.js";
+import db from "./config/Database.js";
 import SequelizeStore from "connect-session-sequelize";
 import bodyParser from 'body-parser';
 import Garments from "./routes/GarmentsRouter.js";
@@ -17,6 +17,8 @@ import Users from "./routes/UsersRouter.js";
 import Roles from "./routes/RolesRouter.js";
 import ArmadiTutorials from "./routes/ArmadiTutorials.js";
 import Views from "./routes/ViewRouter.js";
+import Pdf from "./routes/PdfRouter.js";
+import PDFDocument from "pdfkit";
 import AuthRoute from './routes/AuthRoute.js'
 
 
@@ -62,6 +64,7 @@ app.use(Users);
 app.use(Roles);
 app.use(ArmadiTutorials);
 app.use(Views);
+app.use(Pdf);
 app.use(AuthRoute);
 app.set('view engine', 'ejs');
 app.set('view cache', false);
