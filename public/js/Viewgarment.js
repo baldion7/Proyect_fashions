@@ -146,7 +146,8 @@ function crearContenedorImagen(config) {
     const contenedor = $('<div>').css('position', 'relative');
 
     const imagen = $('<img>').attr({
-        src: config.urlImagen
+        src: config.urlImagen,
+        loading:"lazy"
     }).addClass('imgprenda');
 
     contenedor.append(imagen);
@@ -174,6 +175,7 @@ function crearContenedorImagen(config) {
     const imagens = $("<img>")
         .attr({
             src: config.urlImagen,
+            loading:"lazy",
             "data-zoom": `${config.urlImagen}`,
         })
         .addClass("zoom-garment");
@@ -259,7 +261,7 @@ function printrecommends(response) {
                     <div class="card-label-container">
                         <p class="card-label">${response.Name}</p>
                     </div>
-                    <img src="${items.img_route}" alt="Blusa">
+                    <img src="${items.img_route}" alt="Blusa" loading="lazy">
                 </div>
 
                 <div class="card-info">
@@ -294,7 +296,7 @@ function printrecommends(response) {
                     <div class="card-label-container">
                         <p class="card-label">${garment.Name}</p>
                     </div>
-                    <img src="${items.img_route}" alt="Blusa">
+                    <img src="${items.img_route}" alt="Blusa" loading="lazy">
                 </div>
 
                 <div class="card-info">
@@ -319,8 +321,8 @@ function extra(response) {
     $("#title_general").html(response.Name)
     let ruta = response.molds
     ruta.forEach((item) => {
-        $("#moldes").html(`<img src="${item.img_route}" alt="">`)
-        $("#img-trazo").html(`<img src="${item.img_route}" alt="">`)
+        $("#moldes").html(`<img src="${item.img_route}" alt=""> loading="lazy"`)
+        $("#img-trazo").html(`<img src="${item.img_route}" alt=""> loading="lazy"`)
     })
 
 }
@@ -346,7 +348,7 @@ function printmodal(response) {
         imp += ` <label for=""><i class="fa-solid fa-circle"></i> ${item.armedInfo.Description}</label>`
     })
     $("#container_content_modal_indications").html(imp);
-    $("#container_content_modal_img").html(`<img src="${response.imgdetails[0].img_route}" data-zoom="${response.imgdetails[0].img_route}" class="zoom-modal" alt="">`)
+    $("#container_content_modal_img").html(`<img src="${response.imgdetails[0].img_route}" data-zoom="${response.imgdetails[0].img_route}" class="zoom-modal" alt="" loading="lazy"> `)
     zoommodal()
 }
 

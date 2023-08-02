@@ -122,7 +122,7 @@ function PrintGarments(garment) {
                     <div class="card-label-container">
                         <p class="card-label">${garment.Name}</p>
                     </div>
-                    <img src="${item.img_route}" alt="Blusa">
+                    <img src="${item.img_route}"  loading="lazy">
                 </div>
 
                 <div class="card-info">
@@ -163,7 +163,7 @@ function PrintGarmentssearch(garment) {
                     <div class="card-label-container">
                         <p class="card-label">${opcion.category.Name}</p>
                     </div>
-                    <img src="${item.img_route}" alt="Blusa">
+                    <img src="${item.img_route}" alt="" loading="lazy">
                 </div>
 
                 <div class="card-info">
