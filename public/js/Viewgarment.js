@@ -352,7 +352,6 @@ function printmodal(response) {
     zoommodal()
 }
 
-
 function obtenerObjetoConNombreMasRepetido(array) {
     var contador = {};
     for (var i = 0; i < array.length; i++) {
