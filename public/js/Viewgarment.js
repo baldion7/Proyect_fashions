@@ -312,8 +312,6 @@ function printrecommends(response) {
         })
     }
     $("#suggestions_garment_cards").html(imprimir)
-
-
 }
 
 function extra(response) {
@@ -324,8 +322,6 @@ function extra(response) {
         $("#moldes").html(`<img src="${item.img_route}" alt="" loading="lazy"> `)
         $("#img-trazo").html(`<img src="${item.img_route}" alt="" loading="lazy"> `)
     })
-
-}
 
 function modalviews(id) {
     $.ajax({
