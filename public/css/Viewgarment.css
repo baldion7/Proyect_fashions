@@ -1126,6 +1126,11 @@ p.popup-body-video-text {
         height: 300px;
         width: 100%;
     }
+    .contenet-trazo-info {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
 @media (min-width: 628px) and (max-width: 820px) {
@@ -1133,7 +1138,10 @@ p.popup-body-video-text {
     .btn-arrows-garments {
         display: none;
     }
-
+    .contenet-trazo-info {
+        display: flex;
+        flex-direction: column;
+    }
     .zoom-garment {
         display: none;
         transition: none;
