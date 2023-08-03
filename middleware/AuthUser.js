@@ -2,7 +2,7 @@ import {User} from "../models/UserModel.js";
 import {Roles} from "../models/RolesModel.js";
 export const verifyUser= async (req,res,next)=>{
     if (!req.session.userId){
-        return res.render('pages/login', { title: 'Mi aplicación Node.js' });
+        return res.redirect('/login');
         
     }
     const user= await User.findOne({
@@ -14,7 +14,7 @@ export const verifyUser= async (req,res,next)=>{
         },
     });
     if (!user) {
-        res.render('pages/login', { title: 'Mi aplicación Node.js' });
+        return  res.redirect('/login');
     }
     req.userId=user.Id;
     req.role=user.role.Name;

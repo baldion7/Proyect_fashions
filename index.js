@@ -1,3 +1,4 @@
+import compress from "compression";
 import express from "express";
 import cors from "cors";
 import session from "express-session";
@@ -34,6 +35,8 @@ const sessionStore =SequelizeStore(session.Store);
 const store =new sessionStore({
     db: db
 });
+
+app.use(compress());
 
 app.use(session({
     secret:process.env.SESS_SECRET,

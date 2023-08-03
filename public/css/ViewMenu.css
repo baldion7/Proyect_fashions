@@ -780,7 +780,7 @@ p.popup-body-video-text {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 619px) {
+@media screen and (orientation: landscape) and (max-height: 419px) {
     .side-menu .header img {
         height: 50px;
     }
