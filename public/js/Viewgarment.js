@@ -207,7 +207,7 @@ function instructions(response) {
         ruta.forEach((item) => {
             imp += `<li class="punts-instructions-garment">${item.Description}</li>`
         })
-        $("#instructions_garment").append(`<div class="instructions-garment-content" >
+        $("#proceso_operativo").append(`<div class="instructions-garment-content" >
                 <h1>Proceso operativo</h1>
                 <p>
                 <ul id="instructions-garments-text">
@@ -321,8 +321,8 @@ function extra(response) {
     $("#title_general").html(response.Name)
     let ruta = response.molds
     ruta.forEach((item) => {
-        $("#moldes").html(`<img src="${item.img_route}" alt=""> loading="lazy"`)
-        $("#img-trazo").html(`<img src="${item.img_route}" alt=""> loading="lazy"`)
+        $("#moldes").html(`<img src="${item.img_route}" alt="" loading="lazy"> `)
+        $("#img-trazo").html(`<img src="${item.img_route}" alt="" loading="lazy"> `)
     })
 
 }
