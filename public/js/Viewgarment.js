@@ -374,7 +374,6 @@ function obtenerObjetoConNombreMasRepetido(array) {
             }
         }
     }
-
     var objetoMasRepetido = array.find(function (objeto) {
         return objeto.armedInfo.Name === nombreMasRepetido;
     });
