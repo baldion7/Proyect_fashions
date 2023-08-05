@@ -8,6 +8,9 @@
     --btn-hover-color: #FFFFFF40;
     --btn-active-color: #FFFFFF73;
     --secondary-color: #E93460;
+    --secondary-color: #E93460;
+    --strawberry-hover: #e93461db;
+    --strawberry-active: #e93461b3;
     --primary-text: #FFFFFF;
     --secondary-text: #000000;
 
@@ -282,10 +285,6 @@ a.all-garments-icons {
     transition: var(--tran-03);
 }
 
-.video-tutorial:hover {
-    transform: scale(1.02);
-}
-
 .video-tutorial-contenido {
     display: flex;
     width: 65%;
@@ -315,6 +314,11 @@ a.all-garments-icons {
 .video-tutorial-contenido img:nth-of-type(1) {
     width: 65%;
     flex-shrink: 0;
+    transition: var(--tran-04);
+}
+
+.video-tutorial-contenido img:nth-of-type(1):hover {
+    transform: scale(1.05);
 }
 
 .contenet-trazo-info {
@@ -331,6 +335,7 @@ a.all-garments-icons {
     justify-content: flex-start;
     flex-direction: column;
 }
+
 .instructions-garment-content {
     display: flex;
     width: 75%;
@@ -339,8 +344,8 @@ a.all-garments-icons {
     justify-content: center;
 }
 
-.operativo-garment-content{
-display: flex;
+.operativo-garment-content {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -853,6 +858,7 @@ display: flex;
 
 .popup-scroll {
     height: fit-content;
+    transition: var(--tran-04);
 
 }
 
@@ -885,7 +891,12 @@ a.accept {
 }
 
 a.accept:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
+    background-color: var(--strawberry-hover);
+}
+
+a.accept:active {
+    background-color: var(--strawberry-active);
 }
 
 a.cancel {
@@ -917,7 +928,6 @@ img.popup-body-img-medium-img {
     justify-content: flex-end;
     align-items: center;
     padding: 20px;
-    border-radius: 0 0 13px 13px;
     background-color: #EFEFEF;
 }
 
@@ -984,7 +994,7 @@ p.popup-body-video-text {
 
 @media (max-width: 628px) {
 
-    .img-trazo{
+    .img-trazo {
         width: 100%;
     }
 
@@ -997,7 +1007,7 @@ p.popup-body-video-text {
         display: inline;
     }
 
-    .instructions-garment{
+    .instructions-garment {
         width: 90%;
     }
 
@@ -1065,10 +1075,12 @@ p.popup-body-video-text {
         width: 34px;
         height: 34px;
     }
-    .Bubble i:nth-of-type(1),.Bubble i:nth-of-type(2){
 
-    height: 14px !important;
-    font-size: 14px;
+    .Bubble i:nth-of-type(1),
+    .Bubble i:nth-of-type(2) {
+
+        height: 14px !important;
+        font-size: 14px;
     }
 
     .suggestions-garment-cards {
@@ -1142,6 +1154,7 @@ p.popup-body-video-text {
         height: 300px;
         width: 100%;
     }
+
     .contenet-trazo-info {
         width: 100%;
         display: flex;
@@ -1155,11 +1168,13 @@ p.popup-body-video-text {
     .btn-arrows-garments {
         display: none;
     }
+
     .contenet-trazo-info {
         width: 100%;
         display: flex;
         flex-direction: column;
     }
+
     .zoom-garment {
         display: none;
         transition: none;
@@ -1199,7 +1214,8 @@ p.popup-body-video-text {
     }
 
     .popup-body-video-text-img-medium {
-        width: 406px;;
+        width: 406px;
+        ;
     }
 
     .videos-tutoriasl {
@@ -1207,7 +1223,7 @@ p.popup-body-video-text {
     }
 }
 
-@media all and (orientation: landscape) and (max-height: 619px) {
+@media all and (orientation: landscape) and (max-height: 558px) {
     .popup {
         max-height: 250px;
         overflow-y: hidden;
@@ -1219,6 +1235,65 @@ p.popup-body-video-text {
     }
 
 }
+
+@media screen and (orientation: landscape) and (max-height: 558px) {
+    .side-menu .header img {
+        height: 50px;
+    }
+
+    .popup {
+        max-height: 250px;
+        overflow-y: hidden;
+    }
+
+    .popup-scroll {
+        max-height: 250px;
+        overflow-y: scroll;
+    }
+
+    .side-menu .menu-list ul {
+        max-height: 100px;
+    }
+}
+
+@media all and (orientation: landscape) and (max-height: 600px) {
+    .popup {
+        max-height: 450px;
+        overflow-y: hidden;
+    }
+
+    .popup-scroll {
+        max-height: 450px;
+        overflow-y: scroll;
+    }
+
+}
+
+@media all and (orientation: landscape) and (max-height: 460px) {
+    .popup {
+        max-height: 300px;
+        overflow-y: hidden;
+    }
+
+    .popup-scroll {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+}
+
+@media all and (orientation: landscape) and (max-height: 310px) {
+    .popup {
+        max-height: 250px;
+        overflow-y: hidden;
+    }
+
+    .popup-scroll {
+        max-height: 250px;
+        overflow-y: scroll;
+    }
+}
+
 
 .elemento {
     opacity: 0;

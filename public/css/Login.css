@@ -15,6 +15,8 @@
 :root {
     --blueberry: #6155e1;
     --strawberry: #e93460;
+    --strawberry-hover: #e93461db;
+    --strawberry-active: #e93461b3;
     --tran-04: all 0.4s ease;
 }
 
@@ -156,6 +158,16 @@ form {
     flex-shrink: 0;
     border-radius: 8px;
     background: var(--strawberry);
+    transition: var(--tran-04);
+}
+
+.btn-submit:hover {
+    transform: scale(1.05);
+    background-color: var(--strawberry-hover);
+}
+
+.btn-submit:active {
+    background-color: var(--strawberry-active);
 }
 
 .btn-submit button {
