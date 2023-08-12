@@ -9,8 +9,8 @@
     --btn-active-color: #FFFFFF73;
     --secondary-color: #E93460;
     --secondary-color: #E93460;
-    --strawberry-hover: #e93461db;
-    --strawberry-active: #e93461b3;
+    --strawberry-hover: #e93461f7;
+    --strawberry-active: #e93461e5;
     --primary-text: #FFFFFF;
     --secondary-text: #000000;
 
@@ -992,6 +992,67 @@ p.popup-body-video-text {
     width: 70%;
 }
 
+.button-panel-container {
+    padding: 32px;
+    margin: 0 32px;
+    overflow: hidden;
+    height: fit-content;
+    border-radius: 13px;
+    align-items: center;
+    background-color: aliceblue;
+    justify-content: center;
+}
+
+.button-panel {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-panel-container h1 {
+    color: #000;
+    font-size: 47px;
+    font-family: "Poppins";
+    font-weight: 700;
+    line-height: 64px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.button-panel a {
+    padding: 4px;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    cursor: pointer;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text);
+    background-color: var(--secondary-color);
+    transition: var(--tran-03);
+}
+
+.button-panel a:hover {
+    background-color: var(--strawberry-hover);
+    transform: scale(1.02);
+}
+
+.button-panel a:active {
+    background-color: var(--strawberry-active);
+    transform: scale(1.02);
+}
+
+.button-panel a span {
+    font-size: 19px;
+    color: var(--primary-text);
+    line-height: 30px;
+    text-decoration: none;
+    width: 100%;
+}
+
 @media (max-width: 628px) {
 
     .img-trazo {
@@ -1146,6 +1207,10 @@ p.popup-body-video-text {
 
     .popup-body-video-container {
         flex-direction: column-reverse;
+    }
+
+    .button-panel {
+        flex-direction: column;
     }
 }
 

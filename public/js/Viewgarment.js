@@ -1,6 +1,10 @@
 var idgerments
 var btn = []
 var cont_img = 1;
+
+//TEMPORAL solo para mostrar botones en el panel
+const lista = ['Cierre interior', 'Cierre exterior', 'Bolsillo interior', 'Bolsillo interior', 'Bota','Cierre interior', 'Cierre exterior', 'Bolsillo interior', 'Bolsillo interior', 'Bota',];
+
 $(document).ready(function () {
 
     idgerments = $("#id_germants").val()
@@ -19,7 +23,7 @@ $(document).ready(function () {
     $(document).on("click", ".Bubble", function (e) {
         indextempmodal = $(e.currentTarget).attr("data-index");
         modalviews(indextempmodal)
-            detailsModal()
+        detailsModal()
         /* $("#detailsgarments").modal("show"); */
     });
 
@@ -58,6 +62,9 @@ $(document).ready(function () {
     if (!hasModalBeenShown()) {
         onBoarding();
     }
+
+    show_button(lista);
+
 });
 
 function changgerments() {
@@ -147,7 +154,7 @@ function crearContenedorImagen(config) {
 
     const imagen = $('<img>').attr({
         src: config.urlImagen,
-        loading:"lazy"
+        loading: "lazy"
     }).addClass('imgprenda');
 
     contenedor.append(imagen);
@@ -175,7 +182,7 @@ function crearContenedorImagen(config) {
     const imagens = $("<img>")
         .attr({
             src: config.urlImagen,
-            loading:"lazy",
+            loading: "lazy",
             "data-zoom": `${config.urlImagen}`,
         })
         .addClass("zoom-garment");
@@ -202,12 +209,12 @@ function instructions(response) {
     })
     $("#instructions-garments-text").html(imp)
 
-        imp = ""
-        ruta = response.operatingprocesses
-        ruta.forEach((item) => {
-            imp += `<li class="punts-instructions-garment">${item.Description}</li>`
-        })
-        $("#proceso_operativo").append(`<div class="instructions-garment-content" >
+    imp = ""
+    ruta = response.operatingprocesses
+    ruta.forEach((item) => {
+        imp += `<li class="punts-instructions-garment">${item.Description}</li>`
+    })
+    $("#proceso_operativo").append(`<div class="instructions-garment-content" >
                 <h1>Proceso operativo</h1>
                 <p>
                 <ul id="instructions-garments-text">
@@ -529,3 +536,27 @@ function setModalAsNoShown() {
 function hasModalBeenShown() {
     return localStorage.getItem('modalShown') === 'true';
 }
+
+
+function show_button(lista) {
+    let buttons = '';
+    let button_id = 0;
+    
+    lista.forEach(category => {
+        button_id += 1;
+        let button = document.createElement('a');
+        let span = document.createElement('span');
+        
+        button.setAttribute('id', `button_${button_id}`);
+        button.setAttribute('class', 'button');
+        button.setAttribute('href', `#${category.replace(/ /g, '_').toLowerCase()}`);
+
+        span.textContent= `${category}`;
+        button.appendChild(span);
+
+        button_panel.appendChild(button);
+
+        /* buttons += `<a id='button_${button_id}' class='button' href='   '><span>${category}</span></a>`;
+        button_panel.insertAdjacentHTML('afterend', buttons); */
+    });
+};
