@@ -5,16 +5,18 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "api" ]
+  pull_request:
+    branches: [ "api" ]
 
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -24,7 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i
-    - run: npm i pm2
-    - run: pm2 start index.js
- 
+    - run: npm ci
+    - run: npm run start --if-present
+    - run: npm test  
