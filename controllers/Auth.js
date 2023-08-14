@@ -27,11 +27,7 @@ export const Login = async (req, res) => {
             res.status(200).json({ msg: 'Contraseña incorrecta.' });
             return; // Agregar return aquí para salir de la función si la contraseña es incorrecta.
         }
-
-        req.session.userId = user.Id;
-        req.session.rolName = user.role.Name;
-        const rol = user.role.Name;
-        res.redirect(rol === "administradores" ? "/admin" : "/Germent"); // Redirigir aquí después de la autenticación exitosa.
+        res.status(200).json({name:user.Name,role:user.role.Name}); // Redirigir aquí después de la autenticación exitosa.
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
