@@ -8,5 +8,6 @@ router.get('/api/user/:id',GetUserById);
 router.post('/api/user',CreateUser);
 router.delete('/api/user',DeleteUser);
 router.patch('/api/user/:id',UpdateUser);
+router.use('/api/public', express.static('public'));
 
 export default router;
