@@ -67,9 +67,7 @@ app.use(Roles);
 app.use(ArmadiTutorials);
 app.use(Pdf);
 app.use(AuthRoute);
-app.use('public', express.static(new URL('./public', import.meta.url).pathname));
-app.use(express.static('public', { extensions: ['html', 'css','js'], }));
-
+app.use('/public', express.static('public'));
 
 store.sync();
 
