@@ -12,12 +12,16 @@ import { GarmentFinishInfo } from '../models/GarmentFinishInfoModel.js'
 import { OperatingProcess } from '../models/OperatingProcessModel.js'
 
 export const CreateGarment = async (req, res) => {
-  const { reference, name, garmentid } = req.body
+  const { reference, name, categoryid } = req.body
+
   try {
     const respuesta = await Garment.create({
-      Name: name, Reference: reference, garmentId: garmentid,
+      Name: name, Reference: reference, categoryId: categoryid,
     })
-    res.status(200).json(respuesta)
+    res.status(200).json({
+      respuesta,
+      msg: "Garment created successfully"
+    })
   } catch (error) {
     res.status(500).json({ msg: error.message })
   }

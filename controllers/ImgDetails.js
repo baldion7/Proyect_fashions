@@ -1,10 +1,10 @@
 import {ImgDetails} from "../models/ImgDetailsModel.js";
 
 export const CreateImgDetails = async (req, res) => {
-    const {name, imgroute} = req.body;
+    const {name, imgroute, garmentid} = req.body;
     try {
         const respuesta = await ImgDetails.create({
-            Name: name, img_route: imgroute,
+            Name: name, img_route: imgroute, garmentId: garmentid
         });
         res.status(200).json(respuesta);
     } catch (error) {

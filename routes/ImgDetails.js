@@ -5,7 +5,7 @@ import {verifyUser, adminOnly} from "../middleware/AuthUser.js";
 const router = express.Router();
 router.get('/api/imgdetails',GetImgDetails);
 router.get('/api/imgdetails/:id',GetImgDetailsById);
-router.put('/api/imgdetails',CreateImgDetails);
+router.post('/api/imgdetails',CreateImgDetails);
 router.delete('/api/imgdetails',DeleteImgDetails);
 router.patch('/api/imgdetails/:id',UpdateImgDetails);
 

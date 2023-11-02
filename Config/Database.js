@@ -13,12 +13,13 @@ import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
 import { GarmentFinishInfo } from '../models/GarmentFinishInfoModel.js'
 import { OperatingProcess } from '../models/OperatingProcessModel.js'
 import { Sequelize } from 'sequelize'
-
 const db = new Sequelize("portafolio", "root", "admin123", {
     host: "62.72.5.157",
     dialect: "mysql",
     freezeTableName: true
 });
+
+
 db.ArmadiTutorials=ArmadiTutorials.init(db,Sequelize);
 db.ArmedInfo=ArmedInfo.init(db,Sequelize);
 db.BtnDetails=BtnDetails.init(db,Sequelize);
@@ -85,10 +86,10 @@ db.BtnDetails.hasMany(db.AllowArmedInfo, {
 });
 db.AllowArmedInfo.belongsTo(db.BtnDetails);
 //
-db.ImgGarment.hasMany(db.BtnDetails, {
+db.Garment.hasMany(db.BtnDetails, {
     onDelete: 'CASCADE'
 });
-db.BtnDetails.belongsTo(db.ImgGarment);
+db.BtnDetails.belongsTo(db.Garment);
 //
 db.Roles.hasMany(db.User, {
     onDelete: 'CASCADE'

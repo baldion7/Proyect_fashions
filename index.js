@@ -35,8 +35,8 @@ const store =new sessionStore({
     db: db
 });
 
-app.use(compress());
 
+app.use(compress());
 app.use(session({
     secret:process.env.SESS_SECRET,
     resave:false,

@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/api/armaditutorials',GetArmadiTutorials);
 router.get('/api/armaditutorials/:id',GetArmadiTutorialsById);
 router.get('/api/garment/armaditutorials/:id',GetArmadiTutorialsGearmenById);
-router.put('/api/armaditutorials',CreateArmadiTutorials);
+router.post('/api/armaditutorials',CreateArmadiTutorials);
 router.delete('/api/armaditutorials',DeleteArmadiTutorials);
 router.patch('/api/armaditutorials/:id',UpdateArmadiTutorials);
 
