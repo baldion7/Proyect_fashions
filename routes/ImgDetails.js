@@ -3,10 +3,10 @@ import {DeleteImgDetails,UpdateImgDetails,CreateImgDetails,GetImgDetails,GetImgD
 import {verifyUser, adminOnly} from "../middleware/AuthUser.js";
 
 const router = express.Router();
-router.get('/api/imgdetails',GetImgDetails);
-router.get('/api/imgdetails/:id',GetImgDetailsById);
-router.post('/api/imgdetails',CreateImgDetails);
-router.delete('/api/imgdetails',DeleteImgDetails);
-router.patch('/api/imgdetails/:id',UpdateImgDetails);
+router.get('/api/imggarment/details',GetImgDetails);
+router.get('/api/imggarment/details/:id',GetImgDetailsById);
+router.post('/api/imggarment/details',CreateImgDetails);
+router.delete('/api/imggarment/details',DeleteImgDetails);
+router.patch('/api/imggarment/:id',UpdateImgDetails);
 
 export default router;

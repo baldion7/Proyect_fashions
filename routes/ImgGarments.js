@@ -1,12 +1,11 @@
 import express from "express";
-import {CreateImgDetails,DeleteImgDetails,GetImgDetails,GetImgDetailsById,UpdateImgDetails} from "../controllers/ImgGarment.js";
-import {verifyUser, adminOnly} from "../middleware/AuthUser.js";
+import { CreateImgGeneral, DeleteImgGeneral, GetImgGeneral, GetImgGeneralById, UpdateImgGeneral } from '../controllers/ImgGarment.js'
 
 const router = express.Router();
-router.get('/api/imggarment',GetImgDetails);
-router.get('/api/imggarment/:id',GetImgDetailsById);
-router.post('/api/imggarment',CreateImgDetails);
-router.delete('/api/imggarment',DeleteImgDetails);
-router.patch('/api/imggarment/:id',UpdateImgDetails);
+router.get('/api/imggarment',GetImgGeneral);
+router.get('/api/imggarment/:id',GetImgGeneralById);
+router.post('/api/imggarment',CreateImgGeneral);
+router.delete('/api/imggarment',DeleteImgGeneral);
+router.patch('/api/imggarment/:id',UpdateImgGeneral);
 
 export default router;
