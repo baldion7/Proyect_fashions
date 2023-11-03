@@ -3,6 +3,7 @@ import {ImgDetails} from "../models/ImgDetailsModel.js";
 import {ImgGarment} from "../models/ImgGarmentModel.js";
 import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
+import { Garment } from '../models/GarmentModel.js'
 
 
 export const CreateBtnDetails = async (req, res) => {
@@ -46,7 +47,7 @@ export const GetBtnDetailsById = async (req, res) => {
         const respuesta = await BtnDetails.findOne({
             include:[
                 {
-                    model:ImgDetails
+                    model: Garment
                 },
                 {
                     model:AllowArmedInfo,
