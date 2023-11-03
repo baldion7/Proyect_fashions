@@ -26,7 +26,7 @@ export const GetBtnDetails = async (req, res) => {
                     model:ImgDetails
                 },
                 {
-                    model:ImgGarment
+                    model:Garment
                 },
                 {
                     model:AllowArmedInfo,
