@@ -43,17 +43,9 @@ export const GetGarment = async (req, res) => {
         model: OperatingProcess
       }, {
         model: ImgGarment,
-        include: [
-          {
-            model: BtnDetails,
-            as: 'btndetails',
-            include: [
-              {
-                model: ImgDetails
-              }
-            ]
-          }
-        ]
+
+      },{
+        model:BtnDetails
       }
       ]
     })
@@ -80,17 +72,8 @@ export const GetGarmentById = async (req, res) => {
           model: OperatingProcess
       }, {
         model: ImgGarment,
-        include: [
-          {
-            model: BtnDetails,
-            as: 'btndetails',
-            include: [
-              {
-                model: ImgDetails
-              }
-            ]
-          }
-        ]
+      },{
+        model:BtnDetails
       }
       ],
       where: {
