@@ -6,11 +6,11 @@ import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
 
 
 export const CreateBtnDetails = async (req, res) => {
-    const {name,imggarmentid} = req.body;
+    const {name,garmentId} = req.body;
     try {
         const respuesta = await BtnDetails.create({
             Name: name,
-            imggarmentId:imggarmentid
+            garmentId:garmentId
         });
         res.status(200).json(respuesta);
     } catch (error) {
@@ -87,11 +87,11 @@ export const UpdateBtnDetails= async (req, res) => {
         }
     });
     if (!btndetails) return res.status(404).json({msg: "Datos no encontrados"});
-    const {name,imggarmentid} = req.body;
+    const {name,garmentId} = req.body;
     try {
         const respuesta = await BtnDetails.update({
             Name: name,
-            imggarmentId:imggarmentid
+            garmentId:garmentId
         }, {
             where: {
                 Id: btndetails.Id
