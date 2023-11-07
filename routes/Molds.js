@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/api/models',GetModel);
 router.get('/api/models/:id',GetModelById);
 router.post('/api/models',CreateModel);
-router.delete('/api/models',DeleteModel);
-router.patch('/api/models/:id',UpdateModel);
+//router.delete('/api/models',DeleteModel);
+//router.patch('/api/models/:id',UpdateModel);
 
 export default router;

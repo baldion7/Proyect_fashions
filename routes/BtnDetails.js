@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/api/btndetails',GetBtnDetails);
 router.get('/api/btndetails/:id',GetBtnDetailsById);
 router.post('/api/btndetails',CreateBtnDetails);
-router.delete('/api/btndetails',DeleteBtnDetails);
-router.patch('/api/btndetails/:id',UpdateBtnDetails);
+//router.delete('/api/btndetails',DeleteBtnDetails);
+//router.patch('/api/btndetails/:id',UpdateBtnDetails);
 
 export default router;

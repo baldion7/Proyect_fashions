@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/api/technicalinfo',GetTechnicalInfo);
 router.get('/api/technicalinfo/:id',GetTechnicalInfoById);
 router.post('/api/technicalinfo',CreateTechnicalInfo);
-router.delete('/api/technicalinfo',DeleteTechnicalInfo);
-router.patch('/api/technicalinfo/:id',UpdateTechnicalInfo);
+//router.delete('/api/technicalinfo',DeleteTechnicalInfo);
+//router.patch('/api/technicalinfo/:id',UpdateTechnicalInfo);
 
 export default router;

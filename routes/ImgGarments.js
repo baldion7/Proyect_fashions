@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/api/imggarment',GetImgGeneral);
 router.get('/api/imggarment/:id',GetImgGeneralById);
 router.post('/api/imggarment',CreateImgGeneral);
-router.delete('/api/imggarment',DeleteImgGeneral);
-router.patch('/api/imggarment/:id',UpdateImgGeneral);
+//router.delete('/api/imggarment',DeleteImgGeneral);
+//router.patch('/api/imggarment/:id',UpdateImgGeneral);
 
 export default router;

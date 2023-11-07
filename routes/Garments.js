@@ -7,7 +7,7 @@ router.get('/api/garment',GetGarment);
 router.get('/api/garment/:id',GetGarmentById);
 router.post('/api/search/garment',SearchGarment)
 router.post('/api/garment',CreateGarment);
-router.delete('/api/garment',DeleteGarment);
-router.patch('/api/garment/:id',UpdateGarment);
+//router.delete('/api/garment',DeleteGarment);
+//router.patch('/api/garment/:id',UpdateGarment);
 
 export default router;
