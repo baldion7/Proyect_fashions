@@ -13,9 +13,9 @@ import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
 import { GarmentFinishInfo } from '../models/GarmentFinishInfoModel.js'
 import { OperatingProcess } from '../models/OperatingProcessModel.js'
 import { Sequelize } from 'sequelize'
-const db = new Sequelize("portafolio", "root", "admin123", {
+const db = new Sequelize("portafolio", "artesyc", "Fi$wq60h1k", {
     host: "62.72.5.157",
-    dialect: "mysql",
+    dialect: "postgres",
     freezeTableName: true
 });
 
