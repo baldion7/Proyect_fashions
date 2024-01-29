@@ -46,7 +46,10 @@ export const GetGarment = async (req, res) => {
 
       },{
         model:BtnDetails
-      }
+      },
+        {
+          model: Category
+        }
       ]
     })
     res.status(200).json(respuesta)
