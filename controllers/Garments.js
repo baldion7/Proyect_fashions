@@ -43,20 +43,21 @@ export const GetGarment = async (req, res) => {
         model: OperatingProcess
       }, {
         model: ImgGarment,
-
-      },{
-        model:BtnDetails
-      },
-        {
-          model: Category
-        }
+      }, {
+        model: BtnDetails
+      }, {
+        model: Category
+      }],
+      order: [
+        ['id', 'ASC']
       ]
-    })
-    res.status(200).json(respuesta)
+    });
+    res.status(200).json(respuesta);
   } catch (error) {
-    res.status(500).json({ msg: error.message })
+    res.status(500).json({ msg: error.message });
   }
 }
+
 
 export const GetGarmentById = async (req, res) => {
   try {
