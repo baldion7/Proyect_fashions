@@ -71,25 +71,30 @@ export const GetGarmentById = async (req, res) => {
       }, {
         model: ArmedInfo
       }, {
-          model: GarmentFinishInfo
+        model: GarmentFinishInfo
       }, {
-          model: OperatingProcess,
-         order: [['Id', 'ASC']]
+        model: OperatingProcess,
       }, {
         model: ImgGarment,
       },{
-        model:BtnDetails
-      }
-      ],
+        model: BtnDetails
+      }],
       where: {
         Id: req.params.id
       }
-    })
-    res.status(200).json(respuesta)
+    });
+
+    // Verifica si OperatingProcess existe y es un array antes de intentar ordenarlo
+    if (respuesta && respuesta.OperatingProcess) {
+      respuesta.OperatingProcess.sort((a, b) => a.id - b.id);
+    }
+
+    res.status(200).json(respuesta);
   } catch (error) {
-    res.status(500).json({ msg: error.message })
+    res.status(500).json({ msg: error.message });
   }
 }
+
 export const DeleteGarment = async (req, res) => {
   try {
     const respuesta = await Garment.destroy({
