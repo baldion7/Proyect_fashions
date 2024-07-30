@@ -1,10 +1,10 @@
 import {Models} from "../models/MoldsModel.js";
 
 export const CreateModel = async (req, res) => {
-    const {imgroute,garmentid} = req.body;
+    const {imgroute,imgroutetrazos,garmentid} = req.body;
     try {
         const respuesta = await Models.create({
-            img_route: imgroute,garmentId:garmentid
+            img_route: imgroute,img_route_trazos:imgroutetrazos,garmentId:garmentid
         });
         res.status(200).json(respuesta);
     } catch (error) {
@@ -52,10 +52,12 @@ export const UpdateModel= async (req, res) => {
         }
     });
     if (!model) return res.status(404).json({msg: "Datos no encontrados"});
-    const {imgroute,garmentid} = req.body;
+    const {imgroute,img_route_trazos,garmentid} = req.body;
     try {
         const respuesta = await Models.update({
-            img_route: imgroute,garmentId:garmentid
+            img_route: imgroute,
+            img_route_trazos:img_route_trazos,
+            garmentId:garmentid
         }, {
             where: {
                 Id: model.Id

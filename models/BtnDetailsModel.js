@@ -12,14 +12,6 @@ export class BtnDetails extends Model {
                 Name: {
                     type: DataTypes.STRING,
                     allowNull: false
-                },
-                CoordinatesX: {
-                    type: DataTypes.STRING,
-                    allowNull: false
-                },
-                CoordinatesY: {
-                    type: DataTypes.STRING,
-                    allowNull: false
                 }
             },
             {

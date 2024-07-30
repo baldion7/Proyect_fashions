@@ -13,6 +13,10 @@ export class Models extends Model {
                     type: DataTypes.STRING,
                     allowNull: false
                 },
+              img_route_trazos : {
+                type: DataTypes.STRING,
+                allowNull: false
+              },
             },
             {
                 sequelize,

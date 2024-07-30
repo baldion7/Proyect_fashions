@@ -5,8 +5,8 @@ import {verifyUser, adminOnly} from "../middleware/AuthUser.js";
 const router = express.Router();
 router.get('/api/category',GetCategory);
 router.get('/api/category/:id',GetCategoryById);
-router.put('/api/category',CreateCategory);
-router.delete('/api/category',DeleteCategory);
-router.patch('/api/category/:id',UpdateCategory);
+router.post('/api/category',CreateCategory);
+//router.delete('/api/category',DeleteCategory);
+//router.patch('/api/category/:id',UpdateCategory);
 
 export default router;

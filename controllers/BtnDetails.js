@@ -3,17 +3,15 @@ import {ImgDetails} from "../models/ImgDetailsModel.js";
 import {ImgGarment} from "../models/ImgGarmentModel.js";
 import {ArmedInfo} from "../models/ArmedInfoModels.js";
 import {AllowArmedInfo} from "../models/AllowArmedInfoModels.js";
+import { Garment } from '../models/GarmentModel.js'
 
 
 export const CreateBtnDetails = async (req, res) => {
-    const {name, description,coordinatesy,coordinatesx,imggarmentid} = req.body;
+    const {name,garmentId} = req.body;
     try {
         const respuesta = await BtnDetails.create({
             Name: name,
-            Description: description,
-            CoordinatesY:coordinatesy,
-            CoordinatesX:coordinatesx,
-            imggarmentId:imggarmentid
+            garmentId:garmentId
         });
         res.status(200).json(respuesta);
     } catch (error) {
@@ -28,7 +26,7 @@ export const GetBtnDetails = async (req, res) => {
                     model:ImgDetails
                 },
                 {
-                    model:ImgGarment
+                    model:Garment
                 },
                 {
                     model:AllowArmedInfo,
@@ -49,7 +47,7 @@ export const GetBtnDetailsById = async (req, res) => {
         const respuesta = await BtnDetails.findOne({
             include:[
                 {
-                    model:ImgDetails
+                    model: Garment
                 },
                 {
                     model:AllowArmedInfo,
@@ -90,14 +88,11 @@ export const UpdateBtnDetails= async (req, res) => {
         }
     });
     if (!btndetails) return res.status(404).json({msg: "Datos no encontrados"});
-    const {name, description,coordinatesy,coordinatesx,imggarmentid} = req.body;
+    const {name,garmentId} = req.body;
     try {
         const respuesta = await BtnDetails.update({
             Name: name,
-            Description: description,
-            CoordinatesY:coordinatesy,
-            CoordinatesX:coordinatesx,
-            imggarmentId:imggarmentid
+            garmentId:garmentId
         }, {
             where: {
                 Id: btndetails.Id

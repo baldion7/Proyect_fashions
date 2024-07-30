@@ -1,28 +1,28 @@
-import {ImgDetails} from "../models/ImgDetailsModel.js";
+import { ImgGarment } from '../models/ImgGarmentModel.js'
 
-export const CreateImgDetails = async (req, res) => {
-    const {name,imgroute,garmentid} = req.body;
+export const CreateImgGeneral = async (req, res) => {
+    const {name, imgroute, garmentid} = req.body;
     try {
-        const respuesta = await ImgDetails.create({
-            Name: name, img_route: imgroute,garmentId:garmentid
+        const respuesta = await ImgGarment.create({
+            Name: name, img_route: imgroute, garmentId: garmentid
         });
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
     }
 };
-export const GetImgDetails = async (req, res) => {
+export const GetImgGeneral = async (req, res) => {
     try {
-        const respuesta = await ImgDetails.findAll({});
+        const respuesta = await ImgGarment.findAll({});
         res.status(200).json(respuesta);
     } catch (error) {
         res.status(500).json({msg: error.message});
     }
 };
 
-export const GetImgDetailsById = async (req, res) => {
+export const GetImgGeneralById = async (req, res) => {
     try {
-        const respuesta = await ImgDetails.findOne({
+        const respuesta = await ImgGarment.findOne({
             where: {
                 Id: req.params.id
             }
@@ -32,9 +32,9 @@ export const GetImgDetailsById = async (req, res) => {
         res.status(500).json({msg: error.message});
     }
 };
-export const DeleteImgDetails = async (req, res) => {
+export const DeleteImgGeneral = async (req, res) => {
     try {
-        const respuesta = await ImgDetails.destroy({
+        const respuesta = await ImgGarment.destroy({
             where: {
                 Id: req.params.id
             }
@@ -45,16 +45,16 @@ export const DeleteImgDetails = async (req, res) => {
     }
 };
 
-export const UpdateImgDetails= async (req, res) => {
-    const imgdetails = await ImgDetails.findOne({
+export const UpdateImgGeneral= async (req, res) => {
+    const imgdetails = await ImgGarment.findOne({
         where: {
             Id: req.params.id
         }
     });
     if (!imgdetails) return res.status(404).json({msg: "Datos no encontrados"});
-    const {name,imgroute,garmentid} = req.body;
+    const {name, imgroute, garmentid} = req.body;
     try {
-        const respuesta = await ImgDetails.update({
+        const respuesta = await ImgGarment.update({
             Name: name, img_route: imgroute,garmentId:garmentid
         }, {
             where: {

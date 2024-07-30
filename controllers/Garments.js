@@ -12,12 +12,16 @@ import { GarmentFinishInfo } from '../models/GarmentFinishInfoModel.js'
 import { OperatingProcess } from '../models/OperatingProcessModel.js'
 
 export const CreateGarment = async (req, res) => {
-  const { reference, name, garmentid } = req.body
+  const { reference, name, categoryid } = req.body
+
   try {
     const respuesta = await Garment.create({
-      Name: name, Reference: reference, garmentId: garmentid,
+      Name: name, Reference: reference, categoryId: categoryid,
     })
-    res.status(200).json(respuesta)
+    res.status(200).json({
+      respuesta,
+      msg: "Garment created successfully"
+    })
   } catch (error) {
     res.status(500).json({ msg: error.message })
   }
@@ -39,25 +43,21 @@ export const GetGarment = async (req, res) => {
         model: OperatingProcess
       }, {
         model: ImgGarment,
-        include: [
-          {
-            model: BtnDetails,
-            as: 'btndetails',
-            include: [
-              {
-                model: ImgDetails
-              }
-            ]
-          }
-        ]
-      }
+      }, {
+        model: BtnDetails
+      }, {
+        model: Category
+      }],
+      order: [
+        ['id', 'ASC']
       ]
-    })
-    res.status(200).json(respuesta)
+    });
+    res.status(200).json(respuesta);
   } catch (error) {
-    res.status(500).json({ msg: error.message })
+    res.status(500).json({ msg: error.message });
   }
 }
+
 
 export const GetGarmentById = async (req, res) => {
   try {
@@ -71,33 +71,30 @@ export const GetGarmentById = async (req, res) => {
       }, {
         model: ArmedInfo
       }, {
-          model: GarmentFinishInfo
+        model: GarmentFinishInfo
       }, {
-          model: OperatingProcess
+        model: OperatingProcess,
       }, {
         model: ImgGarment,
-        include: [
-          {
-            model: BtnDetails,
-            as: 'btndetails',
-            include: [
-              {
-                model: ImgDetails
-              }
-            ]
-          }
-        ]
-      }
-      ],
+      },{
+        model: BtnDetails
+      }],
       where: {
         Id: req.params.id
       }
-    })
-    res.status(200).json(respuesta)
+    });
+
+    // Verifica si OperatingProcess existe y es un array antes de intentar ordenarlo
+    if (respuesta && respuesta.OperatingProcess) {
+      respuesta.OperatingProcess.sort((a, b) => a.id - b.id);
+    }
+
+    res.status(200).json(respuesta);
   } catch (error) {
-    res.status(500).json({ msg: error.message })
+    res.status(500).json({ msg: error.message });
   }
 }
+
 export const DeleteGarment = async (req, res) => {
   try {
     const respuesta = await Garment.destroy({
