@@ -73,7 +73,8 @@ export const GetGarmentById = async (req, res) => {
       }, {
           model: GarmentFinishInfo
       }, {
-          model: OperatingProcess
+          model: OperatingProcess,
+         order: [['id', 'ASC']]
       }, {
         model: ImgGarment,
       },{
