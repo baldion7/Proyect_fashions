@@ -74,7 +74,7 @@ export const GetGarmentById = async (req, res) => {
           model: GarmentFinishInfo
       }, {
           model: OperatingProcess,
-         order: [['id', 'ASC']]
+         order: [['Id', 'ASC']]
       }, {
         model: ImgGarment,
       },{
